@@ -1,27 +1,21 @@
-# Databricks notebook source
-# MAGIC %md
-# MAGIC Origem dos dados: https://catalog.data.gov/dataset/electric-vehicle-population-data
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC LIBS
-
-# COMMAND ----------
-
-from pyspark.sql.functions import col, sum, expr, count, row_number, lit
+from pyspark.sql.functions import col, sum, expr, count, row_number, lit, input_file_name
+from pyspark.sql import DataFrame
+from pyspark.sql.functions import col as spark_col, sum as spark_sum
 from pyspark.sql.window import Window
 from datetime import datetime
+import logging
 
-# COMMAND ----------
+###############################################################
 
-# MAGIC %md
-# MAGIC Functions
+#Instancia logger
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger()
 
-# COMMAND ----------
+###############################################################
+
+#Funções Compartilhadas (Utilitárias)
 
 #Cria conexao com Storage GCP
-
 def conex_gcp():
     try:
         dbutils.fs.cp("dbfs:/FileStore/keyfiles/your_key.json", "file:/tmp/your_key.json")
@@ -34,124 +28,244 @@ def conex_gcp():
         # Exemplo de leitura de dados do GCS
         bucket_name = "lake_data_master"
 
-        #dbutils.fs.rm("file:/tmp/your_key.json", recurse=False)
-
-        return "Conexao realizada com sucesso"
+        return logger.info("Connection successfully")
     
-    except:
-        return "Conexao falhou"
+    except Exception as e:
+        return logger.error("Connection failed")
+    
+#Realiza o load dos dados no path raiz
+def load_data_ingestion(path, header, sep):
+    try:
+        df = spark.read.format("csv").option("header", header).option("sep", sep).load(path)
+
+        if len(df.columns) > 1:
+
+            current_date = datetime.now()
+            dat_carga = current_date.strftime("%Y%m%d")
+            df_dat = df.withColumn("dat_ref_carga", lit(dat_carga))
+
+            logger.info("Data loaded successfully")
+
+            return df_dat
+        
+        else:
+            # Lançar uma exceção para indicar que a condição não foi atendida
+            error_message = "The DataFrame does not have more than one column. Check the separator used to read the file."
+            df.show(1)
+            logger.error(error_message)
+            raise ValueError(error_message)
+
+    except ValueError as e:
+        return logger.error(f"Data load failure: {e}")
+    
+def check_nulls(df: DataFrame, required_columns: list):
+    # Verificar se todas as colunas obrigatórias estão presentes no DataFrame
+    df_columns = set(df.columns)
+    missing_columns = [col for col in required_columns if col not in df_columns]
+
+    if missing_columns:
+        raise ValueError(f"The following required columns are missing from the DataFrame: {', '.join(missing_columns)}")
+
+    try:
+        # Calcular a contagem de valores nulos por coluna
+        null_counts = df.select([spark_sum(spark_col(c).isNull().cast("int")).alias(c) for c in df.columns])
+
+        # Convertendo o resultado para um dicionário
+        null_counts_dict = null_counts.collect()[0].asDict()
+
+        # Exibindo colunas com valores nulos e suas respectivas contagens
+        nulls_info = {column: count for column, count in null_counts_dict.items() if count > 0}
+
+        # Verificar se há valores nulos nas colunas que não podem conter nulos
+        invalid_columns = {col: nulls_info[col] for col in required_columns if col in nulls_info and nulls_info[col] > 0}
+
+        # Se houver colunas obrigatórias com nulos, lançar exceção
+        if invalid_columns:
+            raise ValueError(f"Error: The following required columns contain null values: {invalid_columns}")
+
+        # Logar outras colunas com nulos, sem lançar exceção
+        if nulls_info:
+            logger.info("Other columns with null values ​​(not required):")
+            for column, count in nulls_info.items():
+                if column not in required_columns:
+                    logger.info(f"Column: {column}, Null count: {count}")
+        
+        logger.info("Mandatory columns are valid.")
+
+    except ValueError as e:
+        logger.error(e)
+        raise
+
+#Coletar tempo de execução em segundos
+def monitor_execution_time(start_time):
+    
+    end_time = datetime.now()
+    duration = end_time - start_time
+    duration_minutes = duration.total_seconds()
+
+    return duration_minutes 
+
+#Limpar espacos em branco em nome de colunas     
+def clean_column_names(df):
+    # Obter os nomes das colunas
+    column_names = df.columns
+    
+    # Criar um dicionário de mapeamento para renomear as colunas
+    new_column_names = {name: name.strip() for name in column_names}
+    
+    # Aplicar as renomeações
+    for old_name, new_name in new_column_names.items():
+        if old_name != new_name:  # Verificar se o nome precisa ser alterado
+            df = df.withColumnRenamed(old_name, new_name)
+    
+    return df
 
 
-# COMMAND ----------
+###############################################################
 
-# MAGIC %md
-# MAGIC #ETL
+#Função template da ingestão
+def ingestion(db_name, table_name, odate, sep, required_columns):
+    try:
+        #Coletar tempo inicial da execução
+        start_time_total_execution = datetime.now() #métricas
+        logger.info(f"Start of execution: {start_time_total_execution}")
 
-# COMMAND ----------
+        #Gerar conexão com Storage GCP
+        conex_gcp()
 
-# MAGIC %md
-# MAGIC Load
+        #Realiza load dos dados e inclusão do campo com data de carga
+        path_load = f"gs://data-ingestion-bucket-datamaster/table_ingestion_files/{table_name}"
+        logger.info(f"Starting to load data into the path {path_load}/{table_name}_{odate}")
+        load_start_time = datetime.now()
+        df = load_data_ingestion(f"{path_load}/{table_name}_{odate}.csv", header="true",sep=sep)
+        load_total_time = monitor_execution_time(load_start_time )
+        logger.info(f"Total time to load data: {load_total_time} seconds")
 
-# COMMAND ----------
+        # Tamanho dos dados carregados em bytes
+        data_size_bytes = df.rdd.map(lambda row: len(str(row))).reduce(lambda x, y: x + y)
+        data_size_mb = data_size_bytes / (1024 * 1024)
+        data_size_mb_formatted = f"{data_size_mb:.2f}"
+        logger.info(f"Size of loaded data: {data_size_mb_formatted} MB")
 
-#Criar conexão com Storage GCP
-conex_gcp()
+        #Quantidade de dados carregados
+        number_lines_loaded = df.count()
+        logger.info(f"Number of lines loaded {number_lines_loaded }")
 
-#Path com dados brutos
-path = f"gs://lake_data_master/ingestion/Electric_Vehicle_Population_Data.csv"
+        #Realizando limpeza de espacos em branco no nome das colunas
+        df_write_clean = clean_column_names(df)
 
-#Load dos dados
-df = spark.read.format("csv").option("header", "true").load(path)
+        #Realizar validação de campos nulos, obrigatorios e nao obrigatorios
+        check_nulls(df_write_clean, required_columns)
 
-# Obter a data atual
-current_date = datetime.now()
+        #Verificar existência da tabela
+        try:
+            if spark.catalog.tableExists(f"{db_name}.{table_name}"):
+                logger.info(f"The table {db_name}.{table_name} exists.")
+            else:
+                logger.info(f"The table {db_name}.{table_name} does not exist.")
+        except Exception as e:
+            logger.error(f"An error occurred while checking the table: {e}")
 
-# Formatar a data no formato 'ano-mês-dia'
-dat_carga = current_date.strftime("%Y%m%d")
-df_dat_carga = df.withColumn("Dat_ref_carga", lit(dat_carga))
+        #Gravar dados na tabela
+        write_start_time = datetime.now()
+        logger.info(f"Writing data to the table: {table_name}")
+        df_write_clean.write.format("delta") \
+            .mode("append") \
+            .option("mergeSchema", "true") \
+            .option("parquet.file.size", "128MB") \
+            .saveAsTable(f"{db_name}.{table_name}")
+            
+        write_total_time = monitor_execution_time(write_start_time)
+        logger.info(f"Data recording execution time: {write_total_time} seconds")
 
-# COMMAND ----------
+        #Verificar quantidade de dados inseridos
+        logger.info(f"Checking amount of data entered")
+        current_date = datetime.now()
+        dat_carga = current_date.strftime("%Y%m%d")
+        df_verify = spark.read.format("delta").table(f"{db_name}.{table_name}").where(col("dat_ref_carga") == dat_carga)
+        qtd_total_rows_insert = df_verify.count()
+        num_columns_table = len(df_verify.columns)
+        logger.info(f"A total of {qtd_total_rows_insert} rows and a total of {num_columns_table} columns were inserted into the table")
 
-df_dat_carga.display()
+        #Verificar numero de arquivos gerados
+        logger.info(f"Checking total generated files")
+        df_with_file_name = df.withColumn("file_name", input_file_name())
+        num_files = df_with_file_name.select("file_name").distinct().count()
+        logger.info(f"Total files generated: {num_files}")
 
-# COMMAND ----------
+        #Coletar tempo final da execução
+        total_execution = monitor_execution_time(start_time_total_execution )
+        final_time_total_execution = datetime.now()
+        logger.info(f"End of execution: {final_time_total_execution}")
+        logger.info(f"Total execution time: {total_execution}")
 
-#DEfiniar path Bronze
-delta_table_path = "gs://lake_data_master/Bronze/Electric_Vehicle_Population"
+        if number_lines_loaded == qtd_total_rows_insert:
+            alerta = False
+            logger.info(f"Table {table_name} ingested successfully")
+            logger.info(f"No alerts regarding validation of entered quantities")
+        else:
+            alerta = True 
+            logger.info(f"Table {table_name} ingested successfully")
+            logger.warning(f"Check table ingestion, has an ALERT regarding the difference in data found on the load date")
 
-#Create table
-create_string = f"""
-        CREATE TABLE IF NOT EXISTS Electric_Vehicle_Population
-            (
-                VIN_1_to_10 STRING COMMENT '',
-                County STRING COMMENT 'Cidade em estado de Washington',
-                City STRING COMMENT '',
-                State STRING COMMENT 'Estado',
-                Postal_Code STRING COMMENT 'Codigo Postal',
-                Model_Year STRING COMMENT 'Ano do modelo do veículo',
-                Make STRING COMMENT 'Local de fabricacao',
-                Model STRING COMMENT 'Modelo do veiculo',
-                Electric_Vehicle_Type STRING COMMENT 'Tipo do veiculo',
-                Clean_Alternative_Fuel_Vehicle_CAFV_Eligibility STRING COMMENT '',
-                Electric_Range STRING COMMENT '',
-                Base_MSRP STRING COMMENT '',
-                Legislative_District STRING COMMENT '',
-                DOL_Vehicle_ID STRING COMMENT '',
-                Vehicle_Location STRING COMMENT '',
-                Electric_Utility STRING COMMENT '',
-                Census_Tract_2020 STRING COMMENT '',
-                Dat_ref_carga STRING COMMENT 'Data de carga dos dados'
-            )
-            USING DELTA
-            LOCATION '{delta_table_path}'
-            """
+        metricas = {
+            "table_name": table_name,
+            "load_total_time": load_total_time,
+            "number_lines_loaded": number_lines_loaded,
+            "data_size_mb_formatted": data_size_mb_formatted,
+            "write_total_time": write_total_time,
+            "qtd_total_rows_insert": qtd_total_rows_insert,
+            "num_columns_table": num_columns_table,
+            "num_files": num_files,
+            "total_execution": total_execution,
+            "dat_carga": dat_carga,
+            "alerta": alerta
+        }
+        
+        return metricas
+    
+    except Exception as e:
+        return logger.error(f"Error ingesting table {table_name}: {e}")
 
-# Criar a tabela Delta com nomes de coluna válidos
-spark.sql(create_string)
+###############################################################
 
-# COMMAND ----------
+#Ingestião tabela clientes
+#Variaveis esperadas para template de carga
+table_name_clientes = "clientes"
+db_name_clientes = "cadastros"
+odate_clientes = "20240909"
+sep = ";"
+required_columns = ['nome', 'cpf'] 
 
-# Listar dados gravados no diretório do GCP
-display(dbutils.fs.ls("gs://lake_data_master/Bronze/"))
-
-# COMMAND ----------
-
-#Analisar integridade dos dados
-
-#Exibir Linhas com Valores Nulos
-null_counts = df_dat_carga.select([sum(col(c).isNull().cast("int")).alias(c) for c in df_dat_carga.columns])
-null_counts.display()
+#Template de ingestão e atribuição de métricas
+metricas_clientes = ingestion(db_name, table_name_clientes, odate, sep, required_columns)
+print(metricas_clientes)
 
 
+###############################################################
 
-# COMMAND ----------
+#Ingestião tabela produtos
+#Variaveis esperadas para template de carga
+table_name_produtos = "produtos"
+db_name_produtos = "cadastros"
+odate_produtos = "20240909"
+sep = ","
+required_columns = ['id', 'nome', 'descricao', 'categoria'] 
 
-#Inserir dados na tabela
-df_renamed = df_dat_carga.select(
-    col("VIN (1-10)").alias("VIN_1_to_10"),
-    col("County"),
-    col("City"),
-    col("State"),
-    col("Postal Code").alias("Postal_Code"),
-    col("Model Year").alias("Model_Year"),
-    col("Make"),
-    col("Model"),
-    col("Electric Vehicle Type").alias("Electric_Vehicle_Type"),
-    col("Clean Alternative Fuel Vehicle (CAFV) Eligibility").alias("Clean_Alternative_Fuel_Vehicle_CAFV_Eligibility"),
-    col("Electric Range").alias("Electric_Range"),
-    col("Base MSRP").alias("Base_MSRP"),
-    col("Legislative District").alias("Legislative_District"),
-    col("DOL Vehicle ID").alias("DOL_Vehicle_ID"),
-    col("Vehicle Location").alias("Vehicle_Location"),
-    col("Electric Utility").alias("Electric_Utility"),
-    col("2020 Census Tract").alias("Census_Tract_2020"),
-    col("Dat_ref_carga")
-)
+#Template de ingestão e atribuição de métricas
+metricas_produtos = ingestion(db_name_produtos, table_name_produtos, odate_produtos, sep, required_columns)
+print(metricas_produtos)
 
-# Agora, faça o write para a tabela Delta
-df_renamed.write.format("delta").mode("append").save("gs://lake_data_master/Bronze/Electric_Vehicle_Population")
+###############################################################
 
-# COMMAND ----------
+#Ingestião tabela clientesxprod
+#Variaveis esperadas para template de carga
+table_name_clientesxprod = "clientesxprod"
+db_name_clientesxprod = "vendas"
+odate_clientesxprod = "20240909"
+sep = ","
+required_columns = ['cliente_id', 'produto_id'] 
 
-# MAGIC %sql
-# MAGIC select * from Electric_Vehicle_Population
+#Template de ingestão e atribuição de métricas
+metricas_clientesxprod = ingestion(db_name_clientesxprod, table_name_clientesxprod, odate_clientesxprod, sep, required_columns)
+print(metricas_clientesxprod)
