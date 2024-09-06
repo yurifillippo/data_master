@@ -1,0 +1,186 @@
+import logging
+
+#######################################################
+
+#Instancia logger
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger()
+
+#######################################################
+
+#Cria conexao com Storage GCP
+def conex_gcp():
+    try:
+        dbutils.fs.cp("dbfs:/FileStore/keyfiles/your_key.json", "file:/tmp/your_key.json")
+        service_account_key_file = "/tmp/your_key.json"
+
+        # Configurar as credenciais para acessar o Google Cloud Storage
+        spark.conf.set("fs.gs.auth.service.account.enable", "true")
+        spark.conf.set("google.cloud.auth.service.account.json.keyfile", service_account_key_file)
+
+        # Exemplo de leitura de dados do GCS
+        bucket_name = "lake_data_master"
+
+        return logger.info("Conexao realizada com sucesso")
+    
+    except Exception as e:
+        return logger.error("Conexao falhou")
+
+
+#######################################################
+
+
+#Criar tabela delta clientes - Bronze
+def create_delta_table_clientes(delta_table_path, db_name, table_name):
+    create_string = f"""
+        CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
+            (
+                nome STRING,
+                sobrenome STRING,
+                cpf STRING,
+                rg STRING,
+                data_nascimento STRING,
+                est_civil STRING,
+                genero STRING,
+                email STRING,
+                tel_res STRING,
+                tel_cel STRING,
+                endereco STRING,
+                pais STRING,
+                cidade STRING,
+                estado STRING,
+                cep STRING,
+                nacionalidade STRING,
+                renda STRING,
+                cargo STRING,
+                tp_cliente STRING,
+                data_criacao STRING,
+                dat_ref_carga STRING
+            )
+            USING DELTA
+            PARTITIONED BY (dat_ref_carga)
+            LOCATION '{delta_table_path}'
+            """
+
+
+    # Criar a tabela Delta com nomes de coluna válidos
+    try:
+        spark.sql(create_string)
+        return logger.info(f"Tabela {table_name} criada com sucesso")
+
+    except Exception as e:
+        return logger.error(f"Erro na criação da tabela: {e}")
+
+#######################################################
+
+#Criar tabela delta produtos - Bronze
+def create_delta_table_produtos(delta_table_path, db_name, table_name):
+    create_string = f"""
+        CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
+            (
+                id STRING,
+                nome STRING,
+                descricao STRING,
+                categoria STRING,
+                data_lancamento STRING,
+                taxa_juros STRING,
+                taxa_administracao STRING,
+                limite_credito STRING,
+                prazo STRING,
+                contato_suporte STRING,
+                taxa_adesao STRING,
+                data_ultima_atualizacao STRING,
+                prazo_carencia STRING,
+                taxa_rentabilidade STRING,
+                periodo_investimento STRING,
+                multa_cancelamento STRING,
+                dat_ref_carga STRING
+            )
+            USING DELTA
+            PARTITIONED BY (dat_ref_carga)
+            LOCATION '{delta_table_path}'
+            """
+
+
+    # Criar a tabela Delta com nomes de coluna válidos
+    try:
+        spark.sql(create_string)
+        return logger.info(f"Tabela {table_name} criada com sucesso")
+
+    except Exception as e:
+        return logger.error(f"Erro na criação da tabela: {e}")      
+
+
+#######################################################
+
+#Criar tabela delta produtos - Bronze
+def create_delta_table_clientesxprod(delta_table_path, db_name, table_name):
+    create_string = f"""
+        CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
+            (
+                cliente_id STRING,
+                produto_id STRING,
+                data_aquisicao STRING,
+                valor_aquisicao STRING,
+                dat_ref_carga STRING
+            )
+            USING DELTA
+            PARTITIONED BY (dat_ref_carga)
+            LOCATION '{delta_table_path}'
+            """
+
+
+    # Criar a tabela Delta com nomes de coluna válidos
+    try:
+        spark.sql(create_string)
+        return logger.info(f"Tabela {table_name} criada com sucesso")
+
+    except Exception as e:
+        return logger.error(f"Erro na criação da tabela: {e}")
+
+
+#######################################################
+          
+conex_gcp()          
+
+#######################################################
+
+
+# Criando o banco de dados se ele não existir
+db_name = "cadastros"
+spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
+
+#Tabela Clientes
+#Variáveis de path e nome da tabela
+delta_table_path_clientes = "gs://datalake_datamaster/bronze/clientes"
+name_table_clientes = "clientes"
+
+#Criar tabela delta - Bronze
+create_delta_table_clientes(delta_table_path_clientes, db_name, name_table_clientes)
+
+
+
+#Tabela produtos
+#Variáveis de path e nome da tabela
+delta_table_path_produtos = "gs://datalake_datamaster/bronze/produtos"
+name_table_produtos = "produtos"
+
+#Criar tabela delta - Bronze
+create_delta_table_produtos(delta_table_path_produtos, db_name, name_table_produtos)
+
+
+#######################################################
+
+
+# Criando o banco de dados se ele não existir
+db_name = "vendas"
+spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
+
+#Tabela produtos
+#Variáveis de path e nome da tabela
+delta_table_path_clientesxprod = "gs://datalake_datamaster/bronze/clientesxprod"
+name_table_clientesxprod = "clientesxprod"
+
+#Criar tabela delta - Bronze
+create_delta_table_clientesxprod(delta_table_path_clientesxprod, db_name, name_table_clientesxprod)          
+      
