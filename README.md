@@ -29,9 +29,8 @@ Projeto: Datamaster01
     - Dataset: ingestion_metrics_data_master
       - Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
         - Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
-        +---------------------------+--------+-------------------------------------------------------------------------+
         |        Field name         |  Type  |                             Description                                 |
-        +---------------------------+--------+-------------------------------------------------------------------------+
+        |---------------------------|--------|-------------------------------------------------------------------------|
         | table_name                | STRING | Nome da tabela                                                          |
         | load_total_time           | DOUBLE | Tempo total de load dos dados brutos                                    |
         | number_lines_loaded       | INT64  | Número de linhas na tabela com o date em execução                       |
@@ -43,10 +42,10 @@ Projeto: Datamaster01
         | total_execution           | DOUBLE | Tempo total de execução do template de ingestão                         | 
         | dat_carga                 | STRING | Data de execução                                                        |
         | alerta                    | BOOL   | Alerta em divergência de quantidade de dados inseridos no o mesmo odate |
-        +---------------------------+--------+-------------------------------------------------------------------------+
-    
-    - Tabela com métricas de ingestão Silver: 
-    - Tabela com métricas de ingestão Gold:
+    - Dataset: ingestion_metrics_data_master
+      - Tabela com métricas de ingestão Silver:
+    - Dataset: ingestion_metrics_data_master
+      - Tabela com métricas de ingestão Gold:
       
 
 Execução do Projeto:
