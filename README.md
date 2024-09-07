@@ -26,9 +26,9 @@ Projeto: Datamaster01
     - data-master-account@datamaster01.iam.gserviceaccount.com - Role: Owner
 
   Big Query:
-    - Dataset: ingestion_metrics_data_master
-      - Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
-        - Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
+    * Dataset: ingestion_metrics_data_master
+      * Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
+        * Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
         
         |        Field name         |  Type  |                             Description                                 |
         |---------------------------|--------|-------------------------------------------------------------------------|
@@ -43,11 +43,12 @@ Projeto: Datamaster01
         | total_execution           | DOUBLE | Tempo total de execução do template de ingestão                         | 
         | dat_carga                 | STRING | Data de execução                                                        |
         | alerta                    | BOOL   | Alerta em divergência de quantidade de dados inseridos no o mesmo odate |
-        
-    - Dataset: ingestion_metrics_data_master
-      - Tabela com métricas de ingestão Silver:
-    - Dataset: ingestion_metrics_data_master
-      - Tabela com métricas de ingestão Gold:
+
+-
+    * Dataset: ingestion_metrics_data_master
+      * Tabela com métricas de ingestão Silver:
+    * Dataset: ingestion_metrics_data_master
+      * Tabela com métricas de ingestão Gold:
       
 
 Execução do Projeto:
