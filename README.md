@@ -17,20 +17,19 @@ Estrutura GCP:
 
 Projeto: Datamaster01
 
-  Buckets:
-    - data-ingestion-bucket-datamaster (Bucket para receber os dados brutos para ingestão nas tabelas)
-    - datalake_datamaster (Bucket onde é construido o DataLake com as camadas)
-    - analytics_datamaster (Bucket onde o Big Query utiliza para armazenar suas tabelas de analytics)
+Buckets:
+  - data-ingestion-bucket-datamaster (Bucket para receber os dados brutos para ingestão nas tabelas)
+  - datalake_datamaster (Bucket onde é construido o DataLake com as camadas)
+  - analytics_datamaster (Bucket onde o Big Query utiliza para armazenar suas tabelas de analytics)
 
-  Principal:
-    - data-master-account@datamaster01.iam.gserviceaccount.com - Role: Owner
+Principal:
+  - data-master-account@datamaster01.iam.gserviceaccount.com - Role: Owner
 
-  Big Query:
-    * Dataset: ingestion_metrics_data_master
-      * Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
-        * Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
-        
-        
+Big Query:
+  - Dataset: ingestion_metrics_data_master
+    - Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
+      - Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
+
         |        Field name         |  Type  |                             Description                                 |
         |---------------------------|--------|-------------------------------------------------------------------------|
         | table_name                | STRING | Nome da tabela                                                          |
@@ -45,11 +44,10 @@ Projeto: Datamaster01
         | dat_carga                 | STRING | Data de execução                                                        |
         | alerta                    | BOOL   | Alerta em divergência de quantidade de dados inseridos no o mesmo odate |
 
--
-    * Dataset: ingestion_metrics_data_master
-      * Tabela com métricas de ingestão Silver:
-    * Dataset: ingestion_metrics_data_master
-      * Tabela com métricas de ingestão Gold:
+  - Dataset: ingestion_metrics_data_master
+    - Tabela com métricas de ingestão Silver:
+  - Dataset: ingestion_metrics_data_master
+    - Tabela com métricas de ingestão Gold:
       
 
 Execução do Projeto:
