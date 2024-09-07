@@ -1,36 +1,31 @@
-Input_key# data_master
-Projeto para certificação
+__Projeto para certificação__
 
 
-Link Databricks Comunnity: https://community.cloud.databricks.com/browse?o=3786104145975269
+**Link Databricks Comunnity:** https://community.cloud.databricks.com/browse?o=3786104145975269
 
-Portal GCP: https://console.cloud.google.com/welcome/new?orgonly=true&project=datamaster-434121&supportedpurview=organizationId
-
-Projeto GCP Criado: DataMaster
-Bucket: lake_data_master
+**Portal GCP:** https://console.cloud.google.com/welcome/new?orgonly=true&project=datamaster-434121&supportedpurview=organizationId
 
 ![image](https://github.com/user-attachments/assets/358ed006-30ca-4692-94f6-0010db8ea41a)
 
 
+**Estrutura GCP:**
 
-Estrutura GCP:
+**Projeto:** Datamaster01
 
-Projeto: Datamaster01
-
-Buckets:
+**Buckets:**
   - data-ingestion-bucket-datamaster (Bucket para receber os dados brutos para ingestão nas tabelas)
   - datalake_datamaster (Bucket onde é construido o DataLake com as camadas)
   - analytics_datamaster (Bucket onde o Big Query utiliza para armazenar suas tabelas de analytics)
 
-Principal:
+**Principal:**
   - data-master-account@datamaster01.iam.gserviceaccount.com - Role: Owner
 
-Big Query:
-  - Dataset: ingestion_metrics_data_master
-    - Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
-      - Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
+**Big Query:**
+  - **Dataset:** ingestion_metrics_data_master
+    - **Tabela com métricas de ingestão __Bronze__:** ingestion_metrics_data_lake
+      - **Table ID:** datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
 
-        |        Field name         |  Type  |                             Description                                 |
+        |      **Field name**       |**Type**|                           **Description**                               |
         |---------------------------|--------|-------------------------------------------------------------------------|
         | table_name                | STRING | Nome da tabela                                                          |
         | load_total_time           | DOUBLE | Tempo total de load dos dados brutos                                    |
@@ -44,22 +39,22 @@ Big Query:
         | dat_carga                 | STRING | Data de execução                                                        |
         | alerta                    | BOOL   | Alerta em divergência de quantidade de dados inseridos no o mesmo odate |
 
-  - Dataset: ingestion_metrics_data_master
-    - Tabela com métricas de ingestão Silver:
-  - Dataset: ingestion_metrics_data_master
-    - Tabela com métricas de ingestão Gold:
+  - **Dataset:** ingestion_metrics_data_master
+    - **Tabela com métricas de ingestão Silver:**
+  - **Dataset:** ingestion_metrics_data_master
+    - **Tabela com métricas de ingestão Gold:**
       
 
-Execução do Projeto:
+**Execução do Projeto:**
 
--- Databricks
+**Databricks**
 Criação do Cluster databricks
-  Instalar LIB: google-cloud-bigquery - type: PyPI
+  **Instalar LIB:** google-cloud-bigquery - type: PyPI
 
-Ordem de execução dos Notebooks:
-  - Input_key (Inclui chave de acesso ao GCP, uma vez que o Databricks Community possui algumas limitações)
-  - create_table (Cria as tabelas delta)
-  - Ingestion_bronze_template (Template e execução da ingestão da tabela clientes, produtos e clientesxprod)
+**Ordem de execução dos Notebooks:**
+  - **Input_key** (Inclui chave de acesso ao GCP, uma vez que o Databricks Community possui algumas limitações)
+  - **create_table** (Cria as tabelas delta)
+  - **Ingestion_bronze_template** (Template e execução da ingestão da tabela clientes, produtos e clientesxprod)
   - 
 
 
