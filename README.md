@@ -30,6 +30,7 @@ Projeto: Datamaster01
       * Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
         * Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
         
+        
         |        Field name         |  Type  |                             Description                                 |
         |---------------------------|--------|-------------------------------------------------------------------------|
         | table_name                | STRING | Nome da tabela                                                          |
