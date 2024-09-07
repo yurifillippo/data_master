@@ -1,4 +1,4 @@
-# data_master
+Input_key# data_master
 Projeto para certificação
 
 
@@ -10,3 +10,55 @@ Projeto GCP Criado: DataMaster
 Bucket: lake_data_master
 
 ![image](https://github.com/user-attachments/assets/358ed006-30ca-4692-94f6-0010db8ea41a)
+
+
+
+Estrutura GCP:
+
+Projeto: Datamaster01
+
+  Buckets:
+    - data-ingestion-bucket-datamaster (Bucket para receber os dados brutos para ingestão nas tabelas)
+    - datalake_datamaster (Bucket onde é construido o DataLake com as camadas)
+    - analytics_datamaster (Bucket onde o Big Query utiliza para armazenar suas tabelas de analytics)
+
+  Principal:
+    - data-master-account@datamaster01.iam.gserviceaccount.com - Role: Owner
+
+  Big Query:
+    - Dataset: ingestion_metrics_data_master
+      - Tabela com métricas de ingestão Bronze: ingestion_metrics_data_lake
+        - Table ID: datamaster01.ingestion_metrics_data_master.ingestion_metrics_data_lake
+        +---------------------------+--------+-------------------------------------------------------------------------+
+        |        Field name         |  Type  |                             Description                                 |
+        +---------------------------+--------+-------------------------------------------------------------------------+
+        | table_name                | STRING | Nome da tabela                                                          |
+        | load_total_time           | DOUBLE | Tempo total de load dos dados brutos                                    |
+        | number_lines_loaded       | INT64  | Número de linhas na tabela com o date em execução                       |
+        | data_size_mb_formatted    | DOUBLE | Tamanho em MB dos dados brutos carregados                               |
+        | write_total_time          | DOUBLE | Tempo total de escrita na tabela delta                                  |
+        | qtd_total_rows_insert     | INT64  | Quantidade total de linhas inseridas                                    |
+        | num_columns_table         | INT64  | Numero de colunas da tabela                                             |
+        | num_files                 | INT64  | Número de arquivos parquet gerados                                      |
+        | total_execution           | DOUBLE | Tempo total de execução do template de ingestão                         | 
+        | dat_carga                 | STRING | Data de execução                                                        |
+        | alerta                    | BOOL   | Alerta em divergência de quantidade de dados inseridos no o mesmo odate |
+        +---------------------------+--------+-------------------------------------------------------------------------+
+    
+    - Tabela com métricas de ingestão Silver: 
+    - Tabela com métricas de ingestão Gold:
+      
+
+Execução do Projeto:
+
+-- Databricks
+Criação do Cluster databricks
+  Instalar LIB: google-cloud-bigquery - type: PyPI
+
+Ordem de execução dos Notebooks:
+  - Input_key (Inclui chave de acesso ao GCP, uma vez que o Databricks Community possui algumas limitações)
+  - create_table (Cria as tabelas delta)
+  - Ingestion_bronze_template (Template e execução da ingestão da tabela clientes, produtos e clientesxprod)
+  - 
+
+
