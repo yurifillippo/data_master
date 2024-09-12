@@ -50,6 +50,7 @@ __Projeto para certificação__
 **Databricks**
 Criação do Cluster databricks
   **Instalar LIB:** google-cloud-bigquery - type: PyPI
+                    google-cloud-storage - type: PyPI
 
 **Ordem de execução dos Notebooks:**
   - **Input_key** (Inclui chave de acesso ao GCP, uma vez que o Databricks Community possui algumas limitações)
