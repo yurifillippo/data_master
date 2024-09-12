@@ -1,5 +1,31 @@
 __Projeto para certificação__
 
+Criação de Datalake com ingestão Bronze, Silver e Gold.
+Criação de métricas, dashboard de visualização das métricas e alertas.
+
+Definições:
+  - Particionamento: Data de carga dos dados.
+  - Ferramenta: Template Databricks
+  - Versionamento de dados: Delta Lake
+  - Ferramentas de visualização de métricas: Google Data Studio
+  - Monitoramento de desempenho: Google Stackdriver (VERIFICAR)
+  - Definição de tamanho dos arquivos: 128MB (Evita arquivos pequenos demais que podem causar overhead devido à criação de muitas tarefas pequenas)
+  - Em caso de uma segunda ingestão por odate, o ingestor agrupa os arquivos para evitar small files.
+  - Formatos de compressão (Snappy, Gzip, ou Zlib) (VERIFICAR)
+
+Motivos da escolha do Delta
+  - Transações ACID: Garante a consistência e confiabilidade dos dados em operações complexas de leitura e gravação.
+  - Gerenciamento de esquemas: Isso garante que os dados gravados respeitem o esquema definido e facilita a adição de novas colunas. O Delta Lake não permitirá gravações de dados que violem o esquema atual, evitando inconsistências.
+
+
+Compactação automática de pequenos arquivos: O Delta Lake gerencia arquivos menores automaticamente e os combina em arquivos maiores para otimizar o desempenho de leitura e gravação:
+ - spark.conf.set("spark.databricks.delta.autoCompact.enabled", "true") (VERIFICAR)
+Vacuum: Use o comando vacuum para remover arquivos antigos e liberar espaço de armazenamento. Por padrão, ele remove arquivos com mais de 7 dias, mas isso pode ser configurado.
+ - deltaTable.vacuum(retentionHours=168)  # Mantém arquivos de 7 dias
+
+
+
+
 
 **Link Databricks Comunnity:** https://community.cloud.databricks.com/browse?o=3786104145975269
 
