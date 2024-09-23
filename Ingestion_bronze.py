@@ -1,4 +1,8 @@
-from pyspark.sql.functions import col, sum, expr, count, row_number, lit, input_file_name
+pip install sparkmeasure latest
+
+####################################
+
+from pyspark.sql.functions import col, sum, expr, count, row_number, lit, input_file_name, when, trim
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import col as spark_col, sum as spark_sum
 from pyspark.sql.window import Window
@@ -7,8 +11,9 @@ import logging
 import os
 from google.cloud import bigquery
 from google.cloud import storage
+from sparkmeasure import StageMetrics
 
-###############################################################
+####################################
 
 #Instancia logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -17,9 +22,9 @@ logger = logging.getLogger()
 #Atribuir variável de embiente
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/tmp/your_key.json"
 
-###############################################################
+####################################
 
-#Funções Compartilhadas (Utilitárias)
+Funções Compartilhadas (Utilitárias)
 
 #Cria conexao com Storage GCP
 def conex_gcp():
@@ -258,9 +263,8 @@ def delete_files(bucket_name, blob_name):
     
     logger.info(f"File {blob_name} successfully deleted from bucket {bucket_name}.")
 
-###############################################################
+####################################
 
-#Função template da ingestão
 #Função template da ingestão
 def ingestion(db_name, table_name, sep, required_columns):
     """
@@ -276,6 +280,13 @@ def ingestion(db_name, table_name, sep, required_columns):
         string: Status log.
 
     """
+
+    # Inicializa o StageMetrics
+    stagemetrics = StageMetrics(spark)
+
+    # Começa a coleta de métricas
+    stagemetrics.begin()
+
     try:
         #Coletar tempo inicial da execução
         start_time_total_execution = datetime.now()
@@ -306,8 +317,18 @@ def ingestion(db_name, table_name, sep, required_columns):
         number_lines_loaded = df.count()
         logger.info(f"Number of lines loaded {number_lines_loaded }")
 
+        #Transformando todos os campos com a string Null ou null
+        logger.info(f"Verificando colunas com string Null ou null e substituindo por None") 
+        df_transf = df
+
+        # Substitui 'NULL' e 'null' por None em todas as colunas, removendo também espaços extras
+        for column in df.columns:
+            df_transf = df_transf.withColumn(
+                column, 
+                when(trim(col(column)).isin("NULL", "null"), None).otherwise(col(column)))
+
         #Realizando limpeza de espacos em branco no nome das colunas
-        df_write_clean = clean_column_names(df)
+        df_write_clean = clean_column_names(df_transf)
 
         #Realizar validação de campos nulos, obrigatorios e nao obrigatorios
         check_nulls(df_write_clean, required_columns)
@@ -363,65 +384,139 @@ def ingestion(db_name, table_name, sep, required_columns):
             logger.info(f"Table {table_name} ingested successfully")
             logger.warning(f"Check table ingestion, has an ALERT regarding the difference in data found on the load date")
 
+        # Finaliza a coleta de métricas
+        stagemetrics.end()
+
+        # Cria um DataFrame com as métricas coletadas
+        stagemetrics_df = stagemetrics.create_stagemetrics_DF()
+
+        # Realiza agregações para todas as métricas, consolidando tudo
+        consolidated_metrics = stagemetrics_df.agg(
+            {
+                'stageDuration': "sum",
+                'executorRunTime': "sum",
+                'executorCpuTime': "sum",
+                'jvmGCTime': "sum",
+                'numTasks': "sum",
+                'recordsRead': "sum",
+                'bytesRead': "sum",
+                'recordsWritten': "sum",
+                'bytesWritten': "sum",
+                'diskBytesSpilled': "sum",
+                'memoryBytesSpilled': "sum",
+                'shuffleFetchWaitTime': "sum",
+                'peakExecutionMemory': "sum"}
+        )
+
+        # Converte o DataFrame em uma lista de dicionários
+        metricas_list = consolidated_metrics.collect()  # Coleta os dados do DataFrame
+        metricas_list = [row.asDict() for row in metricas_list]  # Converte cada linha em um dicionário
+
         metricas = [{
-            "table_name": table_name, #Nome da tabela
-            "load_total_time": load_total_time, #Tempo total de load dos dados brutos
-            "number_lines_loaded": number_lines_loaded, #Número de linhas na tabela com o date em execução
-            "data_size_mb_formatted": data_size_mb_formatted, #Tamanho em MB dos dados brutos carregados
-            "write_total_time": write_total_time, #Tempo total de escrita na tabela delta
-            "qtd_total_rows_insert": qtd_total_rows_insert, #Quantidade total de linhas inseridas
-            "num_columns_table": num_columns_table, #Numero de colunas da tabela
-            "num_files": num_files, #Número de arquivos parquet gerados
-            "total_execution": total_execution, #Tempo total de execução do template de ingestão
-            "dat_carga": dat_carga, #Data de execução
-            "alerta": alerta #Alerta em divergência de quantidade de dados inseridos no o mesmo odate
-        }]
+            "table_name": table_name, #Nome da tabela.
+            "load_total_time": load_total_time, #Tempo total de load dos dados brutos.
+            "number_lines_loaded": number_lines_loaded, #Número de linhas na tabela com o date em execução.
+            "data_size_mb_formatted": data_size_mb_formatted, #Tamanho em MB dos dados brutos carregados.
+            "write_total_time": write_total_time, #Tempo total de escrita na tabela delta.
+            "qtd_total_rows_insert": qtd_total_rows_insert, #Quantidade total de linhas inseridas.
+            "num_columns_table": num_columns_table, #Numero de colunas da tabela.
+            "num_files": num_files, #Número de arquivos parquet gerados.
+            "total_execution": total_execution, #Tempo total de execução do template de ingestão.
+            "dat_carga": dat_carga, #Data de execução.
+            "alerta": alerta, #Alerta em divergência de quantidade de dados inseridos no o mesmo odate.
+
+            #spark measure metrics
+            'sparkM_stageDuration': sparkmeasure_metrics[0]['sum(stageDuration)'], #Indica o tempo total que o estágio levou para ser executado.
+            'sparkM_executorRunTime': sparkmeasure_metrics[0]['sum(executorRunTime)'], #Mostra quanto tempo o executor passou realmente executando a tarefa.
+            'sparkM_executorCpuTime': sparkmeasure_metrics[0]['sum(executorCpuTime)'], #Refere-se ao tempo que a CPU efetivamente gastou processando a tarefa.
+            'sparkM_jvmGCTime': sparkmeasure_metrics[0]['sum(jvmGCTime)'], #Tempo gasto em coleta de lixo.
+            'sparkM_numTasks': sparkmeasure_metrics[0]['sum(numTasks)'], #Indica quantas tarefas foram executadas em paralelo.
+            'sparkM_recordsRead': sparkmeasure_metrics[0]['sum(recordsRead)'], #Informam sobre a quantidade de dados lidos.
+            'sparkM_bytesRead': sparkmeasure_metrics[0]['sum(bytesRead)'], #Informam sobre a quantidade de dados lidos.
+            'sparkM_recordsWritten': sparkmeasure_metrics[0]['sum(recordsWritten)'], #Analisam a quantidade de dados escritos.
+            'sparkM_bytesWritten': sparkmeasure_metrics[0]['sum(bytesWritten)'], #Analisam a quantidade de dados escritos.
+            'sparkM_diskBytesSpilled': sparkmeasure_metrics[0]['sum(diskBytesSpilled)'], #Indicam o quanto de dados foi spillado para o disco ou memória.
+            'sparkM_memoryBytesSpilled': sparkmeasure_metrics[0]['sum(memoryBytesSpilled)'], #Indicam o quanto de dados foi spillado para o disco ou memória.
+            'sparkM_shuffleFetchWaitTime': sparkmeasure_metrics[0]['sum(shuffleFetchWaitTime)'], #Tempo gasto esperando dados durante operações de shuffle.
+            'sparkM_peakExecutionMemory': sparkmeasure_metrics[0]['sum(peakExecutionMemory)'] #A quantidade máxima de memória utilizada durante a execução.
+    }]
 
         #Insertir dados na tabela de métricas do Big Query
         logger.info("Inserting metrics data into Big Query")
-        insert_bigquery(metricas)  
+        #insert_bigquery(metricas)  
 
         logger.info("Deletando arquivos do path de origem")
         #delete_files(bucket_name, blob_name)
 
+        logger.info("Successfully Completed")
+
         return metricas
-    
+            
     except Exception as e:
         return logger.error(f"Error ingesting table {table_name}: {e}")
 
-###############################################################
+####################################
 
 #Ingestião tabela clientes
 #Variaveis esperadas para template de carga
 table_name_clientes = "clientes"
-db_name_clientes = "cadastros"
+db_name_clientes = "b_cad"
 sep = ";"
 required_columns = ['nome', 'cpf'] 
 
 #Template de ingestão e atribuição de métricas
-metricas_clientes = ingestion(db_name_clientes, table_name_clientes, sep, required_columns, format_file)
+metricas_clientes = ingestion(db_name_clientes, table_name_clientes, sep, required_columns)
 
-
-###############################################################
+####################################
 
 #Ingestião tabela produtos
 #Variaveis esperadas para template de carga
 table_name_produtos = "produtos"
-db_name_produtos = "cadastros"
+db_name_produtos = "b_cad"
 sep = ","
-required_columns = ['id', 'nome', 'descricao', 'categoria'] 
+required_columns = ['produto_id', 'nome', 'descricao', 'categoria'] 
 
 #Template de ingestão e atribuição de métricas
-metricas_produtos = ingestion(db_name_produtos, table_name_produtos, odate_produtos, sep, required_columns)
+metricas_produtos = ingestion(db_name_produtos, table_name_produtos, sep, required_columns)
 
-###############################################################
+####################################
+
 
 #Ingestião tabela clientesxprod
 #Variaveis esperadas para template de carga
 table_name_clientesxprod = "clientesxprod"
-db_name_clientesxprod = "vendas"
+db_name_clientesxprod = "b_vend"
 sep = ","
 required_columns = ['cliente_id', 'produto_id'] 
 
 #Template de ingestão e atribuição de métricas
-metricas_clientesxprod = ingestion(db_name_clientesxprod, table_name_clientesxprod, odate_clientesxprod, sep, required_columns)
+metricas_clientesxprod = ingestion(db_name_clientesxprod, table_name_clientesxprod, sep, required_columns)
+
+####################################
+
+sparkmeasure_metrics[0]['stageDuration']  #Indica o tempo total que o estágio levou para ser executado. Um tempo longo pode sinalizar gargalos de desempenho.
+
+sparkmeasure_metrics[0]['executorRunTime']  #Mostra quanto tempo o executor passou realmente executando a tarefa. É útil para identificar se o tempo total é dominado pela execução ou por outras atividades (como espera).
+
+sparkmeasure_metrics[0]['executorCpuTime']  #Refere-se ao tempo que a CPU efetivamente gastou processando a tarefa. Comparar isso com o executorRunTime pode ajudar a identificar se há ineficiências ou tempos de espera
+
+sparkmeasure_metrics[0]['jvmGCTime']  #Tempo gasto em coleta de lixo. Se esse valor for alto, pode indicar que o seu aplicativo está consumindo mais memória do que o disponível, levando a pausas frequentes para coleta de lixo.
+
+sparkmeasure_metrics[0]['numTasks']  #Indica quantas tarefas foram executadas em paralelo. Se o número de tarefas for baixo, pode indicar que a paralelização não está sendo utilizada de forma eficaz.
+
+sparkmeasure_metrics[0]['recordsRead']  #Informam sobre a quantidade de dados lidos. Se esses números forem baixos em comparação com o esperado, pode ser um sinal de problemas na leitura dos dados.
+
+sparkmeasure_metrics[0]['bytesRead']  #Informam sobre a quantidade de dados lidos. Se esses números forem baixos em comparação com o esperado, pode ser um sinal de problemas na leitura dos dados.
+
+sparkmeasure_metrics[0]['recordsWritten']  #Analisam a quantidade de dados escritos. Se os registros escritos forem significativamente menores do que os lidos, pode indicar uma perda de dados em algum ponto do processo.
+
+sparkmeasure_metrics[0]['bytesWritten']  #Analisam a quantidade de dados escritos. Se os registros escritos forem significativamente menores do que os lidos, pode indicar uma perda de dados em algum ponto do processo.
+
+sparkmeasure_metrics[0]['diskBytesSpilled']  #Indicam o quanto de dados foi spillado para o disco ou memória, respectivamente. Spill pode ser um sinal de que a operação não está sendo executada de maneira eficiente, resultando em perda de desempenho.
+
+sparkmeasure_metrics[0]['memoryBytesSpilled']  #Indicam o quanto de dados foi spillado para o disco ou memória, respectivamente. Spill pode ser um sinal de que a operação não está sendo executada de maneira eficiente, resultando em perda de desempenho.
+
+sparkmeasure_metrics[0]['shuffleFetchWaitTime']  #Tempo gasto esperando dados durante operações de shuffle. Altos valores podem indicar um problema de rede ou configuração que afeta a eficiência do processamento.
+
+sparkmeasure_metrics[0]['peakExecutionMemory']  #A quantidade máxima de memória utilizada durante a execução. Se o valor estiver perto do limite da memória disponível, pode haver riscos de spill ou falhas.
+
