@@ -26,15 +26,14 @@ def conex_gcp():
     except Exception as e:
         return logger.error("Conexao falhou")
 
-
 #######################################################
-
 
 #Criar tabela delta clientes - Bronze
 def create_delta_table_clientes(delta_table_path, db_name, table_name):
     create_string = f"""
         CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
             (
+                client_id STRING,
                 nome STRING,
                 sobrenome STRING,
                 cpf STRING,
@@ -78,7 +77,7 @@ def create_delta_table_produtos(delta_table_path, db_name, table_name):
     create_string = f"""
         CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
             (
-                id STRING,
+                produto_id STRING,
                 nome STRING,
                 descricao STRING,
                 categoria STRING,
@@ -108,8 +107,7 @@ def create_delta_table_produtos(delta_table_path, db_name, table_name):
         return logger.info(f"Tabela {table_name} criada com sucesso")
 
     except Exception as e:
-        return logger.error(f"Erro na criação da tabela: {e}")      
-
+        return logger.error(f"Erro na criação da tabela: {e}")
 
 #######################################################
 
@@ -138,16 +136,49 @@ def create_delta_table_clientesxprod(delta_table_path, db_name, table_name):
     except Exception as e:
         return logger.error(f"Erro na criação da tabela: {e}")
 
-
-#######################################################
-          
-conex_gcp()          
-
 #######################################################
 
+#Criar tabela delta produtos - Silver
+def create_delta_table_clie_limit(delta_table_path, db_name, table_name):
+    create_string = f"""
+        CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
+            (
+                num_doc STRING,
+                est_civil STRING,
+                idade STRING,
+                tp_cliente STRING,
+                classe_renda STRING,
+                genero STRING,
+                estado STRING,
+                renda STRING,
+                prod_contratado STRING,
+                valor_prod_contratado STRING,
+                categoria STRING,
+                limite_credito STRING,
+                dat_ref_carga STRING
+            )
+            USING DELTA
+            PARTITIONED BY (dat_ref_carga)
+            LOCATION '{delta_table_path}'
+            """
+
+
+    # Criar a tabela Delta com nomes de coluna válidos
+    try:
+        spark.sql(create_string)
+        return logger.info(f"Tabela {table_name} criada com sucesso")
+
+    except Exception as e:
+        return logger.error(f"Erro na criação da tabela: {e}")
+
+#######################################################
+
+conex_gcp()
+
+#######################################################
 
 # Criando o banco de dados se ele não existir
-db_name = "cadastros"
+db_name = "b_cad"
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
 
 #Tabela Clientes
@@ -168,12 +199,10 @@ name_table_produtos = "produtos"
 #Criar tabela delta - Bronze
 create_delta_table_produtos(delta_table_path_produtos, db_name, name_table_produtos)
 
-
 #######################################################
 
-
 # Criando o banco de dados se ele não existir
-db_name = "vendas"
+db_name = "b_vend"
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
 
 #Tabela produtos
@@ -182,5 +211,19 @@ delta_table_path_clientesxprod = "gs://datalake_datamaster/bronze/clientesxprod"
 name_table_clientesxprod = "clientesxprod"
 
 #Criar tabela delta - Bronze
-create_delta_table_clientesxprod(delta_table_path_clientesxprod, db_name, name_table_clientesxprod)          
-      
+create_delta_table_clientesxprod(delta_table_path_clientesxprod, db_name, name_table_clientesxprod)
+
+#######################################################
+
+# Criando o banco de dados se ele não existir
+db_name = "s_vend"
+spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
+
+#Tabela produtos
+#Variáveis de path e nome da tabela
+delta_table_path_clie_limit = "gs://datalake_datamaster/silver/clie_limit"
+name_table_cclie_limit = "clie_limit"
+
+#Criar tabela delta - Bronze
+create_delta_table_clie_limit(delta_table_path_clie_limit, db_name, name_table_cclie_limit)
+
