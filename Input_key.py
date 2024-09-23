@@ -1,4 +1,7 @@
-# Databricks notebook source
+import os
+
+###############################
+
 json_data = {
   "type": "service_account",
   "project_id": "datamaster01",
@@ -13,7 +16,7 @@ json_data = {
   "universe_domain": "googleapis.com"
 }
 
-#####################################################
+###############################
 
 import json
 
@@ -33,9 +36,12 @@ print(f"Arquivo JSON salvo em {file_path}")
 # Listar arquivos na pasta onde o arquivo foi salvo
 dbutils.fs.ls("/FileStore/keyfiles/")
 
+#Copiar para stage
+dbutils.fs.cp("dbfs:/FileStore/keyfiles/your_key.json", "file:/tmp/your_key.json")
 
-#####################################################
+#Atribuir a variável de ambiente
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/tmp/your_key.json"
 
+###############################
 
-file_contents = dbutils.fs.head("dbfs:/FileStore/keyfiles/your_key.json")
-print(file_contents)
+print(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
