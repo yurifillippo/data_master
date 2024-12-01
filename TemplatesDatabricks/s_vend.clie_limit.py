@@ -300,7 +300,7 @@ def ingestion(db_name, table_name, dat_carga):
         log_data = json.dumps([{"message": log} for log in log_entries])
         post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
-        return metric_valid
+        raise Exception(f"Critical error processing table. Job terminated.")
 
 # COMMAND ----------
 

@@ -296,10 +296,14 @@ def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append
         # Lista para armazenar os logs
         log_entries = []
 
-        # Configurar o logger
         class ListHandler(logging.Handler):
             def emit(self, record):
-                log_entries.append(self.format(record))
+                # Adicionando os logs em formato de dicionário
+                log_entries.append({
+                    "Timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
+                    "Level": record.levelname,  # Nível do log (INFO, WARNING, ERROR)
+                    "Message": self.format(record)  # Mensagem formatada do log
+                })
 
         logger = logging.getLogger(name_logger)
         logger.setLevel(logging.INFO)
@@ -457,7 +461,7 @@ def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append
         log_data = json.dumps([{"message": log} for log in log_entries])
         post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
-        return metric_valid
+        raise Exception(f"Critical error processing table. Job terminated.")
 
 
 # COMMAND ----------
@@ -475,9 +479,9 @@ param4_string = dbutils.widgets.get("param4")
 try:
     required_columns = ast.literal_eval(param4_string)
     if not isinstance(required_columns, list):
-        raise ValueError("O valor fornecido em param4 não é uma lista.")
+        raise logger.error("O valor fornecido em param4 não é uma lista.")
 except Exception as e:
-    raise ValueError(f"Erro ao converter param4 para lista: {e}")
+    raise logger.error(f"Erro ao converter param4 para lista: {e}")
 
 
 print(f"table_name_clientes: {table_name}")
@@ -488,6 +492,4 @@ print(f"required_columns: {required_columns}")
 # COMMAND ----------
 
 #Template de ingestão e atribuição de métricas
-metricas= ingestion(db_name, table_name, sep, required_columns)
-
-print(metricas)
+ingestion(db_name, table_name, sep, required_columns)

@@ -38,10 +38,6 @@ dbutils.fs.ls(f"abfss://{container_name_gold}@{storage_account_name}.dfs.core.wi
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
 #Criar tabela delta clientes - Bronze
 def create_delta_table_clientes(delta_table_path, db_name, table_name):
     create_string = f"""
@@ -82,7 +78,9 @@ def create_delta_table_clientes(delta_table_path, db_name, table_name):
         return logger.info(f"Tabela {table_name} criada com sucesso")
 
     except Exception as e:
-        return logger.error(f"Erro na criação da tabela: {e}")
+        logger.error(f"Erro na criação da tabela: {e}")
+        raise Exception(f"Critical error create table. Job terminated.")
+
 
 # COMMAND ----------
 
@@ -121,7 +119,8 @@ def create_delta_table_produtos(delta_table_path, db_name, table_name):
         return logger.info(f"Tabela {table_name} criada com sucesso")
 
     except Exception as e:
-        return logger.error(f"Erro na criação da tabela: {e}")
+        logger.error(f"Erro na criação da tabela: {e}")
+        raise Exception(f"Critical error create table. Job terminated.")
 
 # COMMAND ----------
 
@@ -148,7 +147,8 @@ def create_delta_table_clientesxprod(delta_table_path, db_name, table_name):
         return logger.info(f"Tabela {table_name} criada com sucesso")
 
     except Exception as e:
-        return logger.error(f"Erro na criação da tabela: {e}")
+        logger.error(f"Erro na criação da tabela: {e}")
+        raise Exception(f"Critical error create table. Job terminated.")
 
 # COMMAND ----------
 
@@ -183,7 +183,8 @@ def create_delta_table_clie_limit(delta_table_path, db_name, table_name):
         return logger.info(f"Tabela {table_name} criada com sucesso")
 
     except Exception as e:
-        return logger.error(f"Erro na criação da tabela: {e}")
+        logger.error(f"Erro na criação da tabela: {e}")
+        raise Exception(f"Critical error create table. Job terminated.")
 
 # COMMAND ----------
 
@@ -209,7 +210,8 @@ def create_delta_prod_contrat_diario(delta_table_path, db_name, table_name):
         return logger.info(f"Tabela {table_name} criada com sucesso")
 
     except Exception as e:
-        return logger.error(f"Erro na criação da tabela: {e}")
+        logger.error(f"Erro na criação da tabela: {e}")
+        raise Exception(f"Critical error create table. Job terminated.")
 
 # COMMAND ----------
 
