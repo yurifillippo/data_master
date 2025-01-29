@@ -305,9 +305,13 @@ def ingestion(db_name, table_name, dat_carga):
 # COMMAND ----------
 
 #Variaveis esperadas para criação da tabela silver "s_vend.clie_limit"
-db_name = dbutils.widgets.get("param1")
-table_name = dbutils.widgets.get("param2")
-dat_carga = dbutils.widgets.get("param3")
+#db_name = dbutils.widgets.get("param1")
+#table_name = dbutils.widgets.get("param2")
+#dat_carga = dbutils.widgets.get("param3")
+
+db_name = "s_vend"
+table_name = "clie_limit"
+dat_carga = "20241120"
 
 #Template de criação da tabela e atribuição de métricas
 metricas = ingestion(db_name, table_name, dat_carga)

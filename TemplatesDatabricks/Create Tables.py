@@ -129,6 +129,7 @@ def create_delta_table_clientesxprod(delta_table_path, db_name, table_name):
     create_string = f"""
         CREATE TABLE IF NOT EXISTS {db_name}.{table_name}
             (
+                id STRING,
                 cliente_id STRING,
                 produto_id STRING,
                 data_aquisicao STRING,
@@ -283,3 +284,22 @@ name_table_prod_contrat_diario = "prod_contrat_diario"
 delta_table_path_prod_contrat_diario = f"{container_path_gold}{name_table_prod_contrat_diario}/"
 
 create_delta_prod_contrat_diario(delta_table_path_prod_contrat_diario , db_name, name_table_prod_contrat_diario)
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC DROP TABLE IF EXISTS g_vend.prod_contrat_diario;
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC DROP DATABASE IF EXISTS g_vend;
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT CURRENT_METASTORE();
+
+# COMMAND ----------
+
+spark.sql("CREATE CATALOG datamaster_metastore")

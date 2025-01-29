@@ -4,16 +4,6 @@
 
 # COMMAND ----------
 
-# MAGIC
-# MAGIC %md
-# MAGIC ##Pré-requisitos:
-# MAGIC
-# MAGIC - Criar cluster com lib tipo PyPI: google-cloud-bigquery.
-# MAGIC - Executar notebook para inserir "service account key file".
-# MAGIC - Executar notebook de criação de tabelas delta.
-
-# COMMAND ----------
-
 from pyspark.sql.functions import col, sum, expr, count, row_number, lit, input_file_name, when, trim
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import col as spark_col, sum as spark_sum
@@ -41,10 +31,10 @@ def autenticator(logger):
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
 
-        # Retrieve the storage account key from the secret scope
+        # Recupera a chave da conta de armazenamento do escopo da secret
         storage_account_key = dbutils.secrets.get(scope=secret_scope_name, key=secret_key_name)
 
-        # Configure the storage account access key
+        # Configura a chave de acesso da conta de armazenamento
         spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
         return logger.info(f"Authentication carried out successfully")
@@ -75,7 +65,7 @@ def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
     headers = {
         'content-type': "application/json",
         'Authorization': signature,
-        'Log-Type': "MyCustomLogType",  # Certifique-se de que o Log-Type seja válido
+        'Log-Type': "Ingestion_DataMaster",
         'x-ms-date': date_string
     }
     response = requests.post(url, data=log_data, headers=headers)
@@ -87,13 +77,14 @@ def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
 
 
 #Realiza o load dos dados no path raiz
-def load_data_ingestion(table, sep, logger):
+def load_data_ingestion(table, logger, type_file, sep=","):
     """
     Loads the raw data into the source.
 
     Args:
         path (string): stage path where the raw data is located..
         header (string/boolean): true or false
+        type_file (string): Tipo do arquivo que seja utilizado na ingestão (csv, txt, parquet, avro).
         sep (string): Data separator within the file.
 
     Returns:
@@ -112,24 +103,31 @@ def load_data_ingestion(table, sep, logger):
 
         data_hora = datetime.now()
 
-        # Define the actual container name and storage account name
+        # Defina o nome do contêiner e o nome da conta de armazenamento
         storage_account_name = "stagedatamaster"
         sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
         storage_account_key = dbutils.secrets.get(scope="stage_datamaster", key="stage_datamaster_key")
 
-        # Configure the credentials in Spark
+        # Configure a credencial no spark
         spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
-        # Define the path of the container bronze
+        # Define o path no container
         container = "filedataimport"
         path = f"abfss://{container}@{storage_account_name}.dfs.core.windows.net/table_ingestion_files/{table}"
 
-        df = spark.read.format("csv").option("header", "true").option("sep", sep).load(path)
+        if type_file in ["csv", "txt"]:
+            df = spark.read.format(type_file).option("header", "true").option("sep", sep).load(path)
+        elif type_file == "parquet":
+            df = spark.read.format("parquet").load(path)
+        elif type_file == "avro":
+            df = spark.read.format("avro").load(path)
+        else:
+            raise ValueError(f"Unsupported file type: {type_file}")
 
         if len(df.columns) > 1:
 
             timezone = pytz.timezone('America/Sao_Paulo')
-            # Obtenha a data e hora atuais na sua região
+            # Obtenha a data e hora atuais na região
             current_date = datetime.now(timezone)
             dat_carga = current_date.strftime("%Y%m%d")
             df_dat = df.withColumn("dat_ref_carga", lit(dat_carga))
@@ -139,14 +137,14 @@ def load_data_ingestion(table, sep, logger):
             return df_dat
         
         else:
-            # Lançar uma exceção para indicar que a condição não foi atendida
-            error_message = "The DataFrame does not have more than one column. Check the separator used to read the file."
+            error_message = "The DataFrame does not have more than one column. Check the separator used to read the file or or the files read."
             df.show(1)
             logger.error(f"{data_hora} - {table} - {error_message}")
             raise ValueError(error_message)
 
     except ValueError as e:
         return logger.error(f"{data_hora} - {table} - Data load failure: {e}")
+    
     
 #Verificar dados nulos
 def check_nulls(df: DataFrame, required_columns: list, table, logger):
@@ -267,7 +265,7 @@ def verificar_campos(metricas):
 # COMMAND ----------
 
 # Função template da ingestão
-def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append"):
+def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="append", sep=","):
     """
     Template de ingestão para arquivos csv.
 
@@ -351,7 +349,7 @@ def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append
         logger.info(f"Starting to load data into the path")
         load_start_time = datetime.now()
 
-        df = load_data_ingestion(table_name, sep, logger)
+        df = load_data_ingestion(table_name, logger, type_file, sep)
         metricas["load_total_time"] = monitor_execution_time(load_start_time)
         logger.info(f"Total time to load data: {metricas['load_total_time']} seconds")
 
@@ -446,7 +444,11 @@ def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append
 
         # Insertir dados no Azure Monitor
         logger.info("Inserting logs in Azure Monitor")
-        log_data = json.dumps([{"message": log} for log in log_entries])
+        #log_data = json.dumps([{"message": log} for log in log_entries])
+        log_data = json.dumps({
+            "logs": [{"message": log} for log in log_entries],
+            "metrics": metricas})
+
         post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
         return metricas
@@ -458,7 +460,10 @@ def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append
 
         # Insertir dados no Azure Monitor        
         logger.info("Inserting logs in Azure Monitor")
-        log_data = json.dumps([{"message": log} for log in log_entries])
+        #log_data = json.dumps([{"message": log} for log in log_entries])
+        log_data = json.dumps({
+            "logs": [{"message": log} for log in log_entries],
+            "metrics": metricas})
         post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
         raise Exception(f"Critical error processing table. Job terminated.")
@@ -467,29 +472,45 @@ def ingestion(db_name, table_name, sep, required_columns, mode_ingestion="append
 # COMMAND ----------
 
 #Coleta de variáveis
-
-table_name = dbutils.widgets.get("param1")
-db_name = dbutils.widgets.get("param2")
-sep = dbutils.widgets.get("param3")
-
+db_name = dbutils.widgets.get("param1")
+table_name = dbutils.widgets.get("param2")
 # Capturar o valor como string
-param4_string = dbutils.widgets.get("param4")
+param3_string = dbutils.widgets.get("param3")
+mode_ingestion = dbutils.widgets.get("param4")
+type_file = dbutils.widgets.get("param5")
+sep = dbutils.widgets.get("param6")
 
 # Converter para lista
 try:
-    required_columns = ast.literal_eval(param4_string)
+    required_columns = ast.literal_eval(param3_string)
     if not isinstance(required_columns, list):
-        raise logger.error("O valor fornecido em param4 não é uma lista.")
+        raise logger.error("O valor fornecido em param3 não é uma lista.")
 except Exception as e:
     raise logger.error(f"Erro ao converter param4 para lista: {e}")
 
 
-print(f"table_name_clientes: {table_name}")
 print(f"db_name_clientes: {db_name}")
-print(f"sep: {sep}")
+print(f"table_name_clientes: {table_name}")
 print(f"required_columns: {required_columns}")
+print(f"mode_ingestion: {mode_ingestion}")
+print(f"type_file: {type_file}")
+print(f"sep: {sep}")
+
+
+# COMMAND ----------
+
+db_name = "b_cad"
+table_name = "clientes"
+required_columns = ['nome', 'cpf']
+mode_ingestion = "append"
+type_file = "csv"
+sep = ","
 
 # COMMAND ----------
 
 #Template de ingestão e atribuição de métricas
-ingestion(db_name, table_name, sep, required_columns)
+metricas = ingestion(db_name, table_name, required_columns, type_file, mode_ingestion, sep)
+
+# COMMAND ----------
+
+print(metricas)
