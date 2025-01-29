@@ -15,23 +15,23 @@ storage_account_name = "datalakedtm"
 secret_scope_name = "storage_datamaster"
 secret_key_name = "data_master_account_key"
 
-# Retrieve the storage account key from the secret scope
+# Recupera a chave da conta de armazenamento
 storage_account_key = dbutils.secrets.get(scope=secret_scope_name, key=secret_key_name)
 
-# Configure the storage account access key
+# Configura a chave de acesso da conta de armazenamento
 spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
-# Define the path of the container bronze
+# Defina o caminho do container bronze
 container_name_bronze = "bronze"
 container_path_bronze = f"abfss://{container_name_bronze}@{storage_account_name}.dfs.core.windows.net/"
 dbutils.fs.ls(f"abfss://{container_name_bronze}@{storage_account_name}.dfs.core.windows.net/")
 
-# Define the path of the container silver
+# Defina o caminho do container silver
 container_name_silver = "silver"
 container_path_silver = f"abfss://{container_name_silver}@{storage_account_name}.dfs.core.windows.net/"
 dbutils.fs.ls(f"abfss://{container_name_silver}@{storage_account_name}.dfs.core.windows.net/")
 
-# Define the path of the container gold
+# Defina o caminho do container gold
 container_name_gold = "gold"
 container_path_gold = f"abfss://{container_name_gold}@{storage_account_name}.dfs.core.windows.net/"
 dbutils.fs.ls(f"abfss://{container_name_gold}@{storage_account_name}.dfs.core.windows.net/")
@@ -230,7 +230,7 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
 name_table_clientes = "clientes"
 delta_table_path_clientes = f"{container_path_bronze}{name_table_clientes}/"
 
-#Criar tabela delta - Bronze
+#Criar tabela delta clientes - Bronze
 create_delta_table_clientes(delta_table_path_clientes, db_name, name_table_clientes)
 
 
@@ -239,7 +239,7 @@ create_delta_table_clientes(delta_table_path_clientes, db_name, name_table_clien
 name_table_produtos = f"produtos"
 delta_table_path_produtos = f"{container_path_bronze}{name_table_produtos}/"
 
-#Criar tabela delta - Bronze
+#Criar tabela delta produtos - Bronze
 create_delta_table_produtos(delta_table_path_produtos, db_name, name_table_produtos)
 
 # COMMAND ----------
@@ -254,7 +254,7 @@ name_table_clientesxprod = "clientesxprod"
 delta_table_path_clientesxprod = f"{container_path_bronze}{name_table_clientesxprod}/"
 
 
-#Criar tabela delta - Bronze
+#Criar tabela delta clientesxprod - Bronze
 create_delta_table_clientesxprod(delta_table_path_clientesxprod, db_name, name_table_clientesxprod)
 
 # COMMAND ----------
@@ -268,8 +268,7 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
 name_table_cclie_limit = "clie_limit"
 delta_table_path_clie_limit = f"{container_path_silver}{name_table_cclie_limit}/"
 
-
-#Criar tabela delta - Bronze
+#Criar tabela delta clie_limit - Silver
 create_delta_table_clie_limit(delta_table_path_clie_limit, db_name, name_table_cclie_limit)
 
 # COMMAND ----------
@@ -283,4 +282,5 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db_name}")
 name_table_prod_contrat_diario = "prod_contrat_diario"
 delta_table_path_prod_contrat_diario = f"{container_path_gold}{name_table_prod_contrat_diario}/"
 
+#Criar tabela delta prod_contrat_diario - Gold
 create_delta_prod_contrat_diario(delta_table_path_prod_contrat_diario , db_name, name_table_prod_contrat_diario)

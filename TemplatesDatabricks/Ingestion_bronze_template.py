@@ -35,7 +35,6 @@ def autenticator(logger):
         storage_account_key = dbutils.secrets.get(scope=secret_scope_name, key=secret_key_name)
 
         # Configura a chave de acesso da conta de armazenamento
-        #spark.conf.set(f"fs.azure.account.auth.type.{storage_account_name}.dfs.core.windows.net", "SharedKey")
         spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
         return logger.info(f"Authentication carried out successfully")
@@ -303,8 +302,8 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
                 # Adicionando os logs em formato de dicionário
                 log_entries.append({
                     "Timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
-                    "Level": record.levelname,  # Nível do log (INFO, WARNING, ERROR)
-                    "Message": self.format(record)  # Mensagem formatada do log
+                    "Level": record.levelname,
+                    "Message": self.format(record)
                 })
 
         logger = logging.getLogger(name_logger)
@@ -388,7 +387,6 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
         logger.info(f"Writing data to the table: {table_name}")
 
         # Define the actual container name and storage account name
-        #sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
         storage_account_name = "datalake1datamaster"
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
@@ -448,7 +446,6 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
 
         # Insertir dados no Azure Monitor
         logger.info("Inserting logs in Azure Monitor")
-        #log_data = json.dumps([{"message": log} for log in log_entries])
         log_data = json.dumps({
             "logs": [{"message": log} for log in log_entries],
             "metrics": metricas})
@@ -464,7 +461,6 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
 
         # Insertir dados no Azure Monitor        
         logger.info("Inserting logs in Azure Monitor")
-        #log_data = json.dumps([{"message": log} for log in log_entries])
         log_data = json.dumps({
             "logs": [{"message": log} for log in log_entries],
             "metrics": metricas})

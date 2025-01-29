@@ -25,10 +25,10 @@ def autenticator(logger):
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
 
-        # Retrieve the storage account key from the secret scope
+        # Recupera a chave da conta de armazenamento
         storage_account_key = dbutils.secrets.get(scope=secret_scope_name, key=secret_key_name)
 
-        # Configure the storage account access key
+        # Configura a chave de acesso da conta de armazenamento
         spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
         return logger.info(f"Authentication carried out successfully")
@@ -309,15 +309,9 @@ def ingestion(db_name, table_name, dat_carga):
 # COMMAND ----------
 
 #Variaveis esperadas para criação da tabela silver "s_vend.clie_limit"
-#db_name = dbutils.widgets.get("param1")
-#table_name = dbutils.widgets.get("param2")
-#dat_carga = dbutils.widgets.get("param3")
-
-db_name = "s_vend"
-table_name = "clie_limit"
-dat_carga = "20250129"
+db_name = dbutils.widgets.get("param1")
+table_name = dbutils.widgets.get("param2")
+dat_carga = dbutils.widgets.get("param3")
 
 #Template de criação da tabela e atribuição de métricas
-metricas = ingestion(db_name, table_name, dat_carga)
-
-print(metricas)
+ingestion(db_name, table_name, dat_carga)

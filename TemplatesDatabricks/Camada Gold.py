@@ -22,10 +22,10 @@ def autenticator(logger):
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
 
-        # Retrieve the storage account key from the secret scope
+        # Recupera a chave da conta de armazenamento
         storage_account_key = dbutils.secrets.get(scope=secret_scope_name, key=secret_key_name)
 
-        # Configure the storage account access key
+        # Configura a chave de acesso da conta de armazenamento
         spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
         return logger.info(f"Authentication carried out successfully")
@@ -73,6 +73,8 @@ def check_nulls(df: DataFrame, required_columns: list, table, logger):
     Args:
         df (Dataframe): Dataframe loaded with raw data.
         required_columns (list): List with the name of columns that must not have null values.
+        table (string): Name of the table.
+        logger (Logger): Logger object.
 
     Returns:
         string: Status log
