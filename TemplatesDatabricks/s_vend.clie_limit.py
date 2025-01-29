@@ -21,7 +21,7 @@ import json
 def autenticator(logger):
     try:
         sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
-        storage_account_name = "datalake1datamaster"
+        storage_account_name = "datalakedtm"
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
 
@@ -59,7 +59,7 @@ def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
     headers = {
         'content-type': "application/json",
         'Authorization': signature,
-        'Log-Type': "MyCustomLogType",  # Certifique-se de que o Log-Type seja válido
+        'Log-Type': "Silver_DataMaster",
         'x-ms-date': date_string
     }
     response = requests.post(url, data=log_data, headers=headers)
@@ -285,7 +285,9 @@ def ingestion(db_name, table_name, dat_carga):
 
         # Insertir dados no Azure Monitor
         logger.info("Inserting logs in Azure Monitor")
-        log_data = json.dumps([{"message": log} for log in log_entries])
+        log_data = json.dumps({
+            "logs": [{"message": log} for log in log_entries],
+            "metrics": metricas})
         post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
         return metricas
@@ -297,7 +299,9 @@ def ingestion(db_name, table_name, dat_carga):
 
         # Insertir dados no Azure Monitor
         logger.info("Inserting logs in Azure Monitor")
-        log_data = json.dumps([{"message": log} for log in log_entries])
+        log_data = json.dumps({
+            "logs": [{"message": log} for log in log_entries],
+            "metrics": metricas})
         post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
         raise Exception(f"Critical error processing table. Job terminated.")
@@ -311,7 +315,7 @@ def ingestion(db_name, table_name, dat_carga):
 
 db_name = "s_vend"
 table_name = "clie_limit"
-dat_carga = "20241120"
+dat_carga = "20250129"
 
 #Template de criação da tabela e atribuição de métricas
 metricas = ingestion(db_name, table_name, dat_carga)

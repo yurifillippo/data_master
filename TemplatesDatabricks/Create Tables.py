@@ -11,7 +11,7 @@ logger = logging.getLogger()
 
 # Define the actual container name and storage account name
 sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
-storage_account_name = "datalake1datamaster"
+storage_account_name = "datalakedtm"
 secret_scope_name = "storage_datamaster"
 secret_key_name = "data_master_account_key"
 
@@ -284,22 +284,3 @@ name_table_prod_contrat_diario = "prod_contrat_diario"
 delta_table_path_prod_contrat_diario = f"{container_path_gold}{name_table_prod_contrat_diario}/"
 
 create_delta_prod_contrat_diario(delta_table_path_prod_contrat_diario , db_name, name_table_prod_contrat_diario)
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC DROP TABLE IF EXISTS g_vend.prod_contrat_diario;
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC DROP DATABASE IF EXISTS g_vend;
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC SELECT CURRENT_METASTORE();
-
-# COMMAND ----------
-
-spark.sql("CREATE CATALOG datamaster_metastore")

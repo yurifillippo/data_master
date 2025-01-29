@@ -1,16 +1,13 @@
 # Databricks notebook source
-from pyspark.sql.functions import col, sum, expr, count, row_number, lit, input_file_name, sha2, current_date, datediff, floor, when, broadcast
+from pyspark.sql.functions import col, sum, expr, count, row_number, lit, input_file_name, sha2, current_date, datediff, floor, when, broadcast, sum as spark_sum,  round
 from pyspark.sql import DataFrame
-from pyspark.sql.functions import col as spark_col, sum as spark_sum
 from pyspark.sql.window import Window
 from datetime import datetime
 from pyspark.sql.types import DateType
 import logging
 import pytz
-from azure.identity import ManagedIdentityCredential
 import json
 import requests
-import datetime
 import hashlib
 import hmac
 import base64
@@ -21,7 +18,7 @@ import base64
 def autenticator(logger):
     try:
         sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
-        storage_account_name = "datalake1datamaster"
+        storage_account_name = "datalakedtm"
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
 
@@ -58,7 +55,7 @@ def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
     headers = {
         'content-type': "application/json",
         'Authorization': signature,
-        'Log-Type': "MyCustomLogType",  # Certifique-se de que o Log-Type seja válido
+        'Log-Type': "Gold_DataMaster",
         'x-ms-date': date_string
     }
     response = requests.post(url, data=log_data, headers=headers)
@@ -149,12 +146,6 @@ def verificar_campos(metricas):
 
 # COMMAND ----------
 
-dat_carga = "20241116" #Campo virá do parametro do job
-table_name = "prod_contrat_diario"
-db_name = "g_vend"
-
-# COMMAND ----------
-
 def ingestion(db_name, table_name, dat_carga):
 
   """
@@ -204,14 +195,14 @@ def ingestion(db_name, table_name, dat_carga):
     datetime_string = local_datetime.strftime('%Y-%m-%d %H:%M:%S')
 
     metricas = {
-        "table_name": table_name, #Nome da tabela ok
-        "load_total_time": None, #Tempo total de load dos dados brutos ok
-        "qtd_total_rows_insert": None, #Quantidade total de linhas inseridas ok
-        "write_total_time": None, #Tempo total de escrita na tabela delta ok
+        "table_name": table_name, #Nome da tabela
+        "load_total_time": None, #Tempo total de load dos dados brutos
+        "qtd_total_rows_insert": None, #Quantidade total de linhas inseridas
+        "write_total_time": None, #Tempo total de escrita na tabela delta
         "data_size_mb_formatted": None, #Tamanho em MB dos dados brutos carregados
-        "qts_total_rows_insert_verify": None, #Quantidade de linhas ao ler a tabela com o odate ok
-        "num_columns_table": None, #Numero de colunas da tabelaok
-        "num_files": None, #Número de arquivos parquet gerados ok
+        "qts_total_rows_insert_verify": None, #Quantidade de linhas ao ler a tabela com o odate
+        "num_columns_table": None, #Numero de colunas da tabela
+        "num_files": None, #Número de arquivos parquet gerados
         "total_execution": None, #Tempo total de execução do template de ingestão
         "dat_carga": dat_carga, #Data de execução
         "alerta": None, #Alerta em divergência de quantidade de dados inseridos no o mesmo odate
@@ -239,16 +230,21 @@ def ingestion(db_name, table_name, dat_carga):
     logger.info(f"[* Metrics *] - Size of loaded data: {metricas['data_size_mb_formatted']} MB")
 
     #Agreagação
-    df_add_columns = df.select("prod_contratado", "valor_prod_contratado", "limite_credito", "dat_ref_carga") \
-      .withColumn("valor_prod_contratado", col("valor_prod_contratado").cast("double")) \
-      .withColumn("limite_credito", col("limite_credito").cast("double")) \
+    df_add_columns = df.select(
+        "prod_contratado",
+        round(col("valor_prod_contratado").cast("double"), 2).alias("valor_prod_contratado"),
+        round(col("limite_credito").cast("double"), 2).alias("limite_credito"),
+        "dat_ref_carga"
+    )
       
     df_agg = df_add_columns.groupBy("prod_contratado") \
       .sum("valor_prod_contratado", "limite_credito")\
       .withColumn("dat_ref_carga", lit(dat_carga))
 
     df_agg_renamed = df_agg.withColumnRenamed("sum(valor_prod_contratado)", "valor_total_prod_contratado") \
-          .withColumnRenamed("sum(limite_credito)", "valor_total_limite_credito")
+        .withColumnRenamed("sum(limite_credito)", "valor_total_limite_credito") \
+        .withColumn("valor_total_prod_contratado", round(col("valor_total_prod_contratado"), 2)) \
+        .withColumn("valor_total_limite_credito", round(col("valor_total_limite_credito"), 2))
 
     #Verificando quantidade de registros após agragação
     metricas["qtd_total_rows_insert"] = df_agg_renamed.count()
@@ -300,7 +296,9 @@ def ingestion(db_name, table_name, dat_carga):
 
     # Insertir dados no Azure Monitor
     logger.info("Inserting logs in Azure Monitor")
-    log_data = json.dumps([{"message": log} for log in log_entries])
+    log_data = json.dumps({
+            "logs": [{"message": log} for log in log_entries],
+            "metrics": metricas})
     post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
     return metricas
@@ -312,7 +310,9 @@ def ingestion(db_name, table_name, dat_carga):
 
     # Insertir dados no Azure Monitor
     logger.info("Inserting logs in Azure Monitor")
-    log_data = json.dumps([{"message": log} for log in log_entries])
+    log_data = json.dumps({
+            "logs": [{"message": log} for log in log_entries],
+            "metrics": metricas})
     post_data(log_data, WORKSPACE_ID, SHARED_KEY)
 
     raise Exception(f"Critical error processing table. Job terminated.")
@@ -322,13 +322,9 @@ def ingestion(db_name, table_name, dat_carga):
 # COMMAND ----------
 
 #Variaveis esperadas para criação da tabela silver "s_vend.clie_limit"
-#db_name = dbutils.widgets.get("param1")
-#table_name = dbutils.widgets.get("param2")
-#dat_carga = dbutils.widgets.get("param3")
-
-dat_carga = "20241116" #Campo virá do parametro do job
-table_name = "prod_contrat_diario"
-db_name = "g_vend"
+db_name = dbutils.widgets.get("param1")
+table_name = dbutils.widgets.get("param2")
+dat_carga = dbutils.widgets.get("param3")
 
 #Template de criação da tabela e atribuição de métricas
-df = ingestion(db_name, table_name, dat_carga)
+ingestion(db_name, table_name, dat_carga)

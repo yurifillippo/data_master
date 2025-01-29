@@ -26,8 +26,8 @@ import json
 #Autenticator
 def autenticator(logger):
     try:
-        sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
-        storage_account_name = "datalake1datamaster"
+        #sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
+        storage_account_name = "datalakedtm"
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
 
@@ -35,6 +35,7 @@ def autenticator(logger):
         storage_account_key = dbutils.secrets.get(scope=secret_scope_name, key=secret_key_name)
 
         # Configura a chave de acesso da conta de armazenamento
+        #spark.conf.set(f"fs.azure.account.auth.type.{storage_account_name}.dfs.core.windows.net", "SharedKey")
         spark.conf.set(f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net", storage_account_key)
 
         return logger.info(f"Authentication carried out successfully")
@@ -123,6 +124,9 @@ def load_data_ingestion(table, logger, type_file, sep=","):
             df = spark.read.format("avro").load(path)
         else:
             raise ValueError(f"Unsupported file type: {type_file}")
+
+        if df is None:
+            raise Exception("DataFrame is None. Please check the data source and parameters.")
 
         if len(df.columns) > 1:
 
@@ -384,7 +388,7 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
         logger.info(f"Writing data to the table: {table_name}")
 
         # Define the actual container name and storage account name
-        sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
+        #sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
         storage_account_name = "datalake1datamaster"
         secret_scope_name = "storage_datamaster"
         secret_key_name = "data_master_account_key"
@@ -499,18 +503,5 @@ print(f"sep: {sep}")
 
 # COMMAND ----------
 
-db_name = "b_cad"
-table_name = "clientes"
-required_columns = ['nome', 'cpf']
-mode_ingestion = "append"
-type_file = "csv"
-sep = ","
-
-# COMMAND ----------
-
 #Template de ingestão e atribuição de métricas
-metricas = ingestion(db_name, table_name, required_columns, type_file, mode_ingestion, sep)
-
-# COMMAND ----------
-
-print(metricas)
+ingestion(db_name, table_name, required_columns, type_file, mode_ingestion, sep)
