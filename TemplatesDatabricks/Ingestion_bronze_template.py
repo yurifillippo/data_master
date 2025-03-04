@@ -77,7 +77,7 @@ def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
 
 
 #Realiza o load dos dados no path raiz
-def load_data_ingestion(table, logger, type_file, sep=","):
+def load_data_ingestion(table, logger, type_file, dat_carga_origin, sep=","):
     """
     Loads the raw data into the source.
 
@@ -113,7 +113,7 @@ def load_data_ingestion(table, logger, type_file, sep=","):
 
         # Define o path no container
         container = "filedataimport"
-        path = f"abfss://{container}@{storage_account_name}.dfs.core.windows.net/table_ingestion_files/{table}"
+        path = f"abfss://{container}@{storage_account_name}.dfs.core.windows.net/table_ingestion_files/{table}/{dat_carga_origin}"
 
         if type_file in ["csv", "txt"]:
             df = spark.read.format(type_file).option("header", "true").option("sep", sep).load(path)
@@ -268,7 +268,7 @@ def verificar_campos(metricas):
 # COMMAND ----------
 
 # Função template da ingestão
-def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="append", sep=","):
+def ingestion(db_name, table_name, required_columns, type_file, dat_carga_origin, mode_ingestion="append", sep=","):
     """
     Template de ingestão para arquivos csv.
 
@@ -348,11 +348,12 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
         start_time_total_execution = datetime.now()
         logger.info(f"Start of execution: {start_time_total_execution}")
 
+
         # Realiza load dos dados e inclusão do campo com data de carga
         logger.info(f"Starting to load data into the path")
         load_start_time = datetime.now()
 
-        df = load_data_ingestion(table_name, logger, type_file, sep)
+        df = load_data_ingestion(table_name, logger, type_file, dat_carga_origin, sep)
         metricas["load_total_time"] = monitor_execution_time(load_start_time)
         logger.info(f"Total time to load data: {metricas['load_total_time']} seconds")
 
@@ -474,12 +475,11 @@ def ingestion(db_name, table_name, required_columns, type_file, mode_ingestion="
 #Coleta de variáveis
 db_name = dbutils.widgets.get("param1")
 table_name = dbutils.widgets.get("param2")
-# Capturar o valor como string
 param3_string = dbutils.widgets.get("param3")
 mode_ingestion = dbutils.widgets.get("param4")
 type_file = dbutils.widgets.get("param5")
 sep = dbutils.widgets.get("param6")
-
+dat_carga_origin = dbutils.widgets.get("param7")
 # Converter para lista
 try:
     required_columns = ast.literal_eval(param3_string)
@@ -495,9 +495,10 @@ print(f"required_columns: {required_columns}")
 print(f"mode_ingestion: {mode_ingestion}")
 print(f"type_file: {type_file}")
 print(f"sep: {sep}")
+print(f"dat_carga_origin: {dat_carga_origin}")
 
 
 # COMMAND ----------
 
 #Template de ingestão e atribuição de métricas
-ingestion(db_name, table_name, required_columns, type_file, mode_ingestion, sep)
+ingestion(db_name, table_name, required_columns, type_file, dat_carga_origin, mode_ingestion, sep)
