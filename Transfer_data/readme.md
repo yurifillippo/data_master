@@ -69,7 +69,7 @@ a geração da camada Gold.
 ### Como Executar
 
 1. **Clone o repositório**:
-   - Clone o repositório com o comando `git clone <url-do-repositorio>`.
+   - Clone o repositório com o comando `git clone https://github.com/yurifillippo/data_master.git`.
 
 2. **Configuração do Ambiente**:
    - Certifique-se de ter o Docker e Docker Compose instalados.
