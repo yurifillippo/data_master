@@ -152,14 +152,14 @@ def ingestion(db_name, table_name, dat_carga):
         datetime_string = local_datetime.strftime('%Y-%m-%d %H:%M:%S')
 
         metricas = {
-            "table_name": table_name, #Nome da tabela ok
-            "load_total_time": None, #Tempo total de load dos dados brutos ok
-            "qtd_total_rows_insert": None, #Quantidade total de linhas inseridas ok
-            "write_total_time": None, #Tempo total de escrita na tabela delta ok
+            "table_name": table_name, #Nome da tabela
+            "load_total_time": None, #Tempo total de load dos dados brutos
+            "qtd_total_rows_insert": None, #Quantidade total de linhas inseridas
+            "write_total_time": None, #Tempo total de escrita na tabela delta
             "data_size_mb_formatted": None, #Tamanho em MB dos dados brutos carregados
-            "qts_total_rows_insert_verify": None, #Quantidade de linhas ao ler a tabela com o odate ok
-            "num_columns_table": None, #Numero de colunas da tabelaok
-            "num_files": None, #Número de arquivos parquet gerados ok
+            "qts_total_rows_insert_verify": None, #Quantidade de linhas ao ler a tabela com o odate
+            "num_columns_table": None, #Numero de colunas da tabela
+            "num_files": None, #Número de arquivos parquet gerados
             "total_execution": None, #Tempo total de execução do template de ingestão
             "dat_carga": dat_carga, #Data de execução
             "alerta": None, #Alerta em divergência de quantidade de dados inseridos no o mesmo odate
