@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 5s  # Define a frequência de coleta das métricas
+
+scrape_configs:
+  - job_name: 'airflow'
+    static_configs:
+      - targets: ['statsd:9102']  # Coletando métricas do StatsD

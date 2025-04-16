@@ -1,0 +1,145 @@
+version: '3.9'
+
+services:
+  postgres:
+    build:
+      context: ./postgres
+    environment:
+      POSTGRES_DB: "request_manager_product"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "11930143605"
+    ports:
+      - "5432:5432"
+    deploy:
+      mode: global
+      restart_policy:
+        condition: always
+    networks:
+      - mycustomnetwork
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - shared-volume:/var/lib/postgresql/exports
+
+  server_linux_python:
+    build:
+      context: ./server_linux
+      dockerfile: Dockerfile
+    container_name: linux_python
+    restart: always
+    depends_on:
+      - postgres
+    working_dir: /workspace
+    environment:
+      - "AZURE_SAS_TOKEN=sp=cw&st=2024-10-20T02:42:12Z&se=2026-10-20T10:42:12Z&spr=https&sv=2022-11-02&sr=c&sig=MaoRwZWwtKEx5vDafwkbeHkx1Rir6bWRYy0FB3OOs58%3D"
+    volumes:
+      - shared-volume:/var/lib/postgresql/exports
+    command: [ "tail", "-f", "/dev/null" ]
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import sys; sys.exit(0)" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 5s
+    networks:
+     - mycustomnetwork
+
+  airflow:
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
+    image: apache/airflow:2.6.1-python3.8
+    container_name: airflow_scheduler
+    restart: always
+    user: "50000:0"
+    depends_on:
+      - postgres
+      - server_linux_python
+      - statsd
+    environment:
+      - AIRFLOW__CORE__RUN_AS_USER=airflow
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:11930143605@postgres:5432/request_manager_product
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW_HOME=/opt/airflow
+      - AIRFLOW_CONN_DATABRICKS_DEFAULT='databricks://token:https://adb-2740266284098548.8.azuredatabricks.net/?token=dapi190d7f177b6673d77984f7415f6a8847'
+      - DATABRICKS_URL=https://adb-2740266284098548.8.azuredatabricks.net
+      - DATABRICKS_TOKEN=dapi190d7f177b6673d77984f7415f6a8847
+      - AIRFLOW__METRICS__STATSD_ON=True  # Ativa o envio de métricas
+      - AIRFLOW__METRICS__STATSD_HOST=statsd  # Define StatsD como destino das métricas
+      - AIRFLOW__METRICS__STATSD_PORT=9125  # Porta do StatsD
+      - AIRFLOW_CONFIG=/opt/airflow/airflow.cfg
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./airflow/dags:/opt/airflow/dags  # Diretório para seus DAGs
+      - ./airflow/logs:/opt/airflow/logs  # Diretório para logs do Airflow
+      - ./airflow/plugins:/opt/airflow/plugins  # Plugins do Airflow
+      - shared-volume:/var/lib/postgresql/exports  # Compartilhando volume com postgres
+      - ./airflow/airflow.cfg:/opt/airflow/airflow.cfg
+    ports:
+      - "8080:8080"  # Porta do Airflow Web UI
+    networks:
+      - mycustomnetwork
+    command: >
+      bash -c "
+        airflow db upgrade &&
+        airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email yuri.fillippo@outlook.com &&
+        airflow scheduler &
+        airflow webserver"
+  
+
+  statsd:
+    image: prom/statsd-exporter
+    restart: always
+    container_name: statsd
+    volumes:
+      - ./statsd.yaml:/statsd.yaml
+    command: "--statsd.mapping-config=/statsd.yaml"
+    ports:
+      - "9125:9125/udp"  # Porta UDP para receber métricas do Airflow
+      - "9102:9102"  # Porta HTTP para Prometheus coletar métricas
+    networks:
+      - mycustomnetwork
+
+
+  # Prometheus
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - statsd
+    networks:
+      - mycustomnetwork
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-azure-monitor-datasource
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+    networks:
+      - mycustomnetwork
+
+
+volumes:
+  postgres-data:
+  shared-volume:
+  grafana-data:
+
+networks:
+  mycustomnetwork:
+    driver: bridge

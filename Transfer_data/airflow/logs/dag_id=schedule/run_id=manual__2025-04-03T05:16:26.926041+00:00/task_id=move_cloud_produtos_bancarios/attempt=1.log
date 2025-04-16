@@ -1,0 +1,52 @@
+[2025-04-03T05:16:30.473+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-03T05:16:30.494+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: schedule.move_cloud_produtos_bancarios manual__2025-04-03T05:16:26.926041+00:00 [queued]>
+[2025-04-03T05:16:30.504+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: schedule.move_cloud_produtos_bancarios manual__2025-04-03T05:16:26.926041+00:00 [queued]>
+[2025-04-03T05:16:30.504+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-04-03T05:16:30.516+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): move_cloud_produtos_bancarios> on 2025-04-03 05:16:26.926041+00:00
+[2025-04-03T05:16:30.521+0000] {standard_task_runner.py:72} INFO - Started process 1522 to run task
+[2025-04-03T05:16:30.523+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'schedule', 'move_cloud_produtos_bancarios', 'manual__2025-04-03T05:16:26.926041+00:00', '--job-id', '2005', '--raw', '--subdir', 'DAGS_FOLDER/dag_master.py', '--cfg-path', '/tmp/tmpfjb4c5fn']
+[2025-04-03T05:16:30.526+0000] {standard_task_runner.py:105} INFO - Job 2005: Subtask move_cloud_produtos_bancarios
+[2025-04-03T05:16:30.539+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-04-03T05:16:30.613+0000] {task_command.py:467} INFO - Running <TaskInstance: schedule.move_cloud_produtos_bancarios manual__2025-04-03T05:16:26.926041+00:00 [running]> on host 11605a72ff70
+[2025-04-03T05:16:30.818+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='schedule' AIRFLOW_CTX_TASK_ID='move_cloud_produtos_bancarios' AIRFLOW_CTX_EXECUTION_DATE='2025-04-03T05:16:26.926041+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-03T05:16:26.926041+00:00'
+[2025-04-03T05:16:30.822+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-04-03T05:16:30.854+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-04-03T05:16:30.858+0000] {subprocess.py:88} INFO - Running command: ['/bin/bash', '-c', 'docker exec linux_python /bin/bash -c \'/workspace/scripts/run_move_file.sh /path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv table_ingestion_files/produtos/20250403/produtos_1743657390.csv && echo "Script Executado com Sucesso!"\'']
+[2025-04-03T05:16:30.872+0000] {subprocess.py:99} INFO - Output:
+[2025-04-03T05:16:31.583+0000] {subprocess.py:106} INFO - 2025-04-03 05:16:31,580 - INFO - Iniciando o upload do arquivo '/path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv' para o blob 'table_ingestion_files/produtos/20250403/produtos_1743657390.csv' no container 'filedataimport'.
+[2025-04-03T05:16:31.587+0000] {subprocess.py:106} INFO - 2025-04-03 05:16:31,580 - INFO - Blob URL gerada: https://stagedatamaster.blob.core.windows.net/filedataimport/table_ingestion_files/produtos/20250403/produtos_1743657390.csv?sp=cw&st=2024-10-20T02:42:12Z&se=2026-10-20T10:42:12Z&spr=https&sv=2022-11-02&sr=c&sig=MaoRwZWwtKEx5vDafwkbeHkx1Rir6bWRYy0FB3OOs58%3D
+[2025-04-03T05:16:31.588+0000] {subprocess.py:106} INFO - 2025-04-03 05:16:31,585 - INFO - Enviando o arquivo '/path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv' para o Azure Blob Storage.
+[2025-04-03T05:16:31.589+0000] {subprocess.py:106} INFO - 2025-04-03 05:16:31,587 - INFO - Request URL: 'https://stagedatamaster.blob.core.windows.net/filedataimport/table_ingestion_files/produtos/20250403/produtos_1743657390.csv?sp=REDACTED&st=REDACTED&se=REDACTED&spr=REDACTED&sv=REDACTED&sr=REDACTED&sig=REDACTED'
+[2025-04-03T05:16:31.589+0000] {subprocess.py:106} INFO - Request method: 'PUT'
+[2025-04-03T05:16:31.589+0000] {subprocess.py:106} INFO - Request headers:
+[2025-04-03T05:16:31.590+0000] {subprocess.py:106} INFO -     'Content-Length': '8060'
+[2025-04-03T05:16:31.590+0000] {subprocess.py:106} INFO -     'x-ms-blob-type': 'REDACTED'
+[2025-04-03T05:16:31.590+0000] {subprocess.py:106} INFO -     'If-None-Match': '*'
+[2025-04-03T05:16:31.591+0000] {subprocess.py:106} INFO -     'x-ms-version': 'REDACTED'
+[2025-04-03T05:16:31.591+0000] {subprocess.py:106} INFO -     'Content-Type': 'application/octet-stream'
+[2025-04-03T05:16:31.592+0000] {subprocess.py:106} INFO -     'Accept': 'application/xml'
+[2025-04-03T05:16:31.592+0000] {subprocess.py:106} INFO -     'User-Agent': 'azsdk-python-storage-blob/12.24.1 Python/3.12.9 (Linux-6.10.14-linuxkit-aarch64-with-glibc2.36)'
+[2025-04-03T05:16:31.593+0000] {subprocess.py:106} INFO -     'x-ms-date': 'REDACTED'
+[2025-04-03T05:16:31.593+0000] {subprocess.py:106} INFO -     'x-ms-client-request-id': 'cddc4460-104a-11f0-8e1c-0242ac120004'
+[2025-04-03T05:16:31.594+0000] {subprocess.py:106} INFO - A body is sent with the request
+[2025-04-03T05:16:31.955+0000] {subprocess.py:106} INFO - 2025-04-03 05:16:31,952 - INFO - Response status: 201
+[2025-04-03T05:16:31.957+0000] {subprocess.py:106} INFO - Response headers:
+[2025-04-03T05:16:31.958+0000] {subprocess.py:106} INFO -     'Content-Length': '0'
+[2025-04-03T05:16:31.958+0000] {subprocess.py:106} INFO -     'Content-MD5': 'REDACTED'
+[2025-04-03T05:16:31.959+0000] {subprocess.py:106} INFO -     'Last-Modified': 'Thu, 03 Apr 2025 05:16:31 GMT'
+[2025-04-03T05:16:31.959+0000] {subprocess.py:106} INFO -     'ETag': '"0x8DD726EB246D916"'
+[2025-04-03T05:16:31.959+0000] {subprocess.py:106} INFO -     'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+[2025-04-03T05:16:31.959+0000] {subprocess.py:106} INFO -     'x-ms-request-id': 'c41c4118-401e-007c-6157-a4c071000000'
+[2025-04-03T05:16:31.960+0000] {subprocess.py:106} INFO -     'x-ms-client-request-id': 'cddc4460-104a-11f0-8e1c-0242ac120004'
+[2025-04-03T05:16:31.960+0000] {subprocess.py:106} INFO -     'x-ms-version': 'REDACTED'
+[2025-04-03T05:16:31.960+0000] {subprocess.py:106} INFO -     'x-ms-content-crc64': 'REDACTED'
+[2025-04-03T05:16:31.960+0000] {subprocess.py:106} INFO -     'x-ms-request-server-encrypted': 'REDACTED'
+[2025-04-03T05:16:31.960+0000] {subprocess.py:106} INFO -     'Date': 'Thu, 03 Apr 2025 05:16:30 GMT'
+[2025-04-03T05:16:31.961+0000] {subprocess.py:106} INFO - 2025-04-03 05:16:31,953 - INFO - Arquivo '/path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv' enviado com sucesso para o Azure Blob Storage no blob 'table_ingestion_files/produtos/20250403/produtos_1743657390.csv'.
+[2025-04-03T05:16:32.004+0000] {subprocess.py:106} INFO - Script Executado com Sucesso!
+[2025-04-03T05:16:32.024+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2025-04-03T05:16:32.152+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-04-03T05:16:32.154+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=schedule, task_id=move_cloud_produtos_bancarios, run_id=manual__2025-04-03T05:16:26.926041+00:00, execution_date=20250403T051626, start_date=20250403T051630, end_date=20250403T051632
+[2025-04-03T05:16:32.234+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-04-03T05:16:32.319+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-04-03T05:16:32.321+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,420 @@
+[2025-03-09T19:41:13.238+0000] {processor.py:186} INFO - Started process (PID=185) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:41:13.238+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:41:13.240+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:13.239+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:41:13.248+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:13.248+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:41:13.249+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:41:13.262+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.029 seconds
+[2025-03-09T19:41:44.568+0000] {processor.py:186} INFO - Started process (PID=217) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:41:44.570+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:41:44.573+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:44.573+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:41:44.613+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:44.613+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:41:44.614+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:41:44.699+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.142 seconds
+[2025-03-09T19:42:15.024+0000] {processor.py:186} INFO - Started process (PID=238) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:42:15.025+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:42:15.026+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:15.026+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:42:15.035+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:15.035+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:42:15.035+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:42:15.047+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.026 seconds
+[2025-03-09T19:42:45.596+0000] {processor.py:186} INFO - Started process (PID=258) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:42:45.597+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:42:45.598+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:45.598+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:42:45.606+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:45.605+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:42:45.606+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:42:45.617+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.025 seconds
+[2025-03-09T19:43:16.069+0000] {processor.py:186} INFO - Started process (PID=278) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:43:16.069+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:43:16.070+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:16.070+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:43:16.076+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:16.076+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:43:16.076+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:43:16.086+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.021 seconds
+[2025-03-09T19:43:46.545+0000] {processor.py:186} INFO - Started process (PID=298) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:43:46.545+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:43:46.546+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:46.546+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:43:46.552+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:46.551+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:43:46.552+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:43:46.562+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.020 seconds
+[2025-03-09T19:44:17.001+0000] {processor.py:186} INFO - Started process (PID=318) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:44:17.001+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:44:17.002+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:17.002+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:44:17.008+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:17.007+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:44:17.008+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:44:17.018+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.020 seconds
+[2025-03-09T19:44:47.507+0000] {processor.py:186} INFO - Started process (PID=338) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:44:47.508+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:44:47.509+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:47.509+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:44:47.515+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:47.514+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:44:47.515+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:44:47.526+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.022 seconds
+[2025-03-09T19:45:17.977+0000] {processor.py:186} INFO - Started process (PID=358) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:45:17.977+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:45:17.978+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:17.978+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:45:17.985+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:17.985+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_produtos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_produtos.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:45:17.986+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:45:17.997+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.024 seconds
+[2025-03-09T19:45:28.154+0000] {processor.py:186} INFO - Started process (PID=368) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:45:28.156+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:45:28.158+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:28.158+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:45:28.201+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:45:28.271+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:28.271+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:45:28.702+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:28.702+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-08T06:22:00+00:00, run_after=2025-03-09T06:22:00+00:00
+[2025-03-09T19:45:28.718+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.573 seconds
+[2025-03-09T19:46:09.240+0000] {processor.py:186} INFO - Started process (PID=173) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:46:09.245+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:46:09.253+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:09.252+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:46:09.299+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:46:09.380+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:09.380+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:46:09.404+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:09.404+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:46:09.478+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.255 seconds
+[2025-03-09T19:46:40.516+0000] {processor.py:186} INFO - Started process (PID=206) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:46:40.521+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:46:40.538+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:40.536+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:46:40.657+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:46:40.845+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:40.844+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:46:40.881+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:40.881+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:46:40.915+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.441 seconds
+[2025-03-09T19:47:11.286+0000] {processor.py:186} INFO - Started process (PID=226) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:47:11.806+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:47:11.820+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:11.817+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:47:11.897+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:47:12.007+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:12.007+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:47:12.026+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:12.026+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:47:12.044+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.794 seconds
+[2025-03-09T19:47:42.518+0000] {processor.py:186} INFO - Started process (PID=246) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:47:42.519+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:47:42.523+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:42.523+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:47:42.595+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:47:42.684+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:42.684+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:47:42.706+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:42.705+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:47:42.728+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.224 seconds
+[2025-03-09T19:48:13.264+0000] {processor.py:186} INFO - Started process (PID=266) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:48:13.266+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:48:13.269+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:13.269+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:48:13.293+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:48:13.335+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:13.335+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:48:13.346+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:13.346+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:48:13.362+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.105 seconds
+[2025-03-09T19:48:43.785+0000] {processor.py:186} INFO - Started process (PID=286) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:48:43.786+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:48:43.788+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:43.788+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:48:43.807+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:48:43.861+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:43.861+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:48:43.871+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:43.871+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:48:43.886+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.109 seconds
+[2025-03-09T19:49:14.454+0000] {processor.py:186} INFO - Started process (PID=307) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:49:14.457+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:49:14.471+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:14.471+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:49:14.535+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:49:14.719+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:14.719+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:49:14.767+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:14.767+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:49:14.800+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.389 seconds
+[2025-03-09T19:49:45.244+0000] {processor.py:186} INFO - Started process (PID=327) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:49:45.245+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:49:45.248+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:45.248+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:49:45.272+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:49:45.337+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:45.337+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:49:45.351+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:45.351+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:49:45.366+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.140 seconds
+[2025-03-09T19:50:15.951+0000] {processor.py:186} INFO - Started process (PID=347) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:50:15.952+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:50:15.956+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:15.955+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:50:15.980+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:50:16.051+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:16.051+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:50:16.223+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:16.222+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:50:16.235+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.294 seconds
+[2025-03-09T19:50:46.853+0000] {processor.py:186} INFO - Started process (PID=367) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:50:46.855+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:50:46.867+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:46.866+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:50:46.898+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:50:46.977+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:46.976+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:50:47.126+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:47.126+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:50:47.138+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.307 seconds
+[2025-03-09T19:51:17.801+0000] {processor.py:186} INFO - Started process (PID=387) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:51:17.802+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:51:17.805+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:17.805+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:51:17.838+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:51:18.037+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:18.037+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:51:18.049+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:18.048+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:51:18.060+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.269 seconds
+[2025-03-09T19:51:48.645+0000] {processor.py:186} INFO - Started process (PID=407) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:51:48.647+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:51:48.653+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:48.652+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:51:48.691+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:51:48.902+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:48.901+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:51:48.915+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:48.915+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:51:48.928+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.300 seconds
+[2025-03-09T19:52:19.535+0000] {processor.py:186} INFO - Started process (PID=427) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:52:19.537+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:52:19.541+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:19.541+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:52:19.569+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:52:19.770+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:19.770+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:52:19.784+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:19.784+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:52:19.799+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.286 seconds
+[2025-03-09T19:52:50.277+0000] {processor.py:186} INFO - Started process (PID=447) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:52:50.278+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:52:50.281+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:50.280+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:52:50.376+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:52:50.414+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:50.414+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:52:50.425+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:50.425+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:52:50.436+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.168 seconds
+[2025-03-09T19:53:21.221+0000] {processor.py:186} INFO - Started process (PID=467) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:53:21.222+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:53:21.223+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:21.223+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:53:21.244+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:53:21.308+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:21.308+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:53:21.327+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:21.327+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:53:21.342+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.126 seconds
+[2025-03-09T19:53:51.912+0000] {processor.py:186} INFO - Started process (PID=487) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:53:51.914+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:53:51.921+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:51.921+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:53:51.950+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:53:52.020+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:52.020+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:53:52.032+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:52.032+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:53:52.045+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.144 seconds
+[2025-03-09T19:54:22.592+0000] {processor.py:186} INFO - Started process (PID=507) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:54:22.594+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:54:22.597+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:22.597+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:54:22.624+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:54:22.687+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:22.687+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:54:22.712+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:22.712+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:54:22.728+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.150 seconds
+[2025-03-09T19:54:53.233+0000] {processor.py:186} INFO - Started process (PID=527) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:54:53.235+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:54:53.237+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:53.237+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:54:53.258+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:54:53.304+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:53.304+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:54:53.315+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:53.314+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:54:53.325+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.102 seconds
+[2025-03-09T19:55:23.920+0000] {processor.py:186} INFO - Started process (PID=547) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:55:23.921+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:55:23.925+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:23.925+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:55:23.953+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:55:24.025+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:24.025+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:55:24.040+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:24.040+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:55:24.054+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.146 seconds
+[2025-03-09T19:55:54.596+0000] {processor.py:186} INFO - Started process (PID=567) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:55:54.598+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:55:54.601+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:54.601+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:55:54.632+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:55:54.712+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:54.712+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:55:54.733+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:54.733+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:55:54.749+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.173 seconds
+[2025-03-09T19:56:25.410+0000] {processor.py:186} INFO - Started process (PID=707) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:56:25.412+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:56:25.420+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:25.420+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:56:25.456+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:56:25.545+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:25.545+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:56:25.572+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:25.572+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:56:25.589+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.201 seconds
+[2025-03-09T19:56:56.034+0000] {processor.py:186} INFO - Started process (PID=727) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:56:56.036+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:56:56.041+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:56.040+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:56:56.072+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:56:56.138+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:56.137+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:56:56.153+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:56.153+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:56:56.165+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.146 seconds
+[2025-03-09T19:57:26.742+0000] {processor.py:186} INFO - Started process (PID=753) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:57:26.746+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:57:26.750+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:26.750+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:57:26.774+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:57:26.840+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:26.840+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:57:26.853+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:26.853+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:57:26.866+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.139 seconds
+[2025-03-09T19:57:57.413+0000] {processor.py:186} INFO - Started process (PID=773) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:57:57.415+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:57:57.426+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:57.423+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:57:57.473+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:57:57.573+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:57.573+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:57:57.594+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:57.594+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:57:57.610+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.217 seconds
+[2025-03-09T19:58:28.158+0000] {processor.py:186} INFO - Started process (PID=793) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:58:28.159+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:58:28.162+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:28.162+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:58:28.200+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:58:28.268+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:28.268+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:58:28.283+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:28.283+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:58:28.296+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.151 seconds
+[2025-03-09T19:58:58.915+0000] {processor.py:186} INFO - Started process (PID=813) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:58:58.917+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:58:58.925+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:58.924+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:58:58.965+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:58:59.055+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:59.055+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:58:59.076+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:59.076+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:58:59.092+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.200 seconds
+[2025-03-09T19:59:29.581+0000] {processor.py:186} INFO - Started process (PID=833) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:59:29.582+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T19:59:29.584+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:59:29.584+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:59:29.606+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T19:59:29.653+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:59:29.653+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:59:29.666+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:59:29.666+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T19:59:29.677+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.107 seconds
+[2025-03-09T20:00:00.222+0000] {processor.py:186} INFO - Started process (PID=853) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:00:00.223+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:00:00.230+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:00.230+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:00:00.270+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:00:00.361+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:00.361+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:00:00.377+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:00.376+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:00:00.393+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.181 seconds
+[2025-03-09T20:00:30.962+0000] {processor.py:186} INFO - Started process (PID=873) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:00:30.963+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:00:30.969+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:30.968+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:00:31.011+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:00:31.096+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:31.096+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:00:31.115+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:31.115+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:00:31.133+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.190 seconds
+[2025-03-09T20:01:01.684+0000] {processor.py:186} INFO - Started process (PID=893) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:01:01.689+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:01:01.692+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:01.692+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:01:01.730+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:01:01.816+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:01.816+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:01:01.835+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:01.835+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:01:01.849+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.181 seconds
+[2025-03-09T20:01:32.502+0000] {processor.py:186} INFO - Started process (PID=913) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:01:32.506+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:01:32.510+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:32.510+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:01:32.551+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:01:32.642+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:32.642+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:01:32.661+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:32.661+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:01:32.679+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.195 seconds
+[2025-03-09T20:02:03.233+0000] {processor.py:186} INFO - Started process (PID=933) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:02:03.234+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:02:03.241+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:03.241+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:02:03.276+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:02:03.365+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:03.365+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:02:03.382+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:03.382+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:02:03.397+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.193 seconds
+[2025-03-09T20:02:34.020+0000] {processor.py:186} INFO - Started process (PID=953) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:02:34.023+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:02:34.030+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:34.029+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:02:34.073+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:02:34.167+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:34.167+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:02:34.190+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:34.190+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:02:34.206+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.204 seconds
+[2025-03-09T20:03:04.814+0000] {processor.py:186} INFO - Started process (PID=973) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:03:04.817+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:03:04.824+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:04.824+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:03:04.868+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:03:04.952+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:04.952+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:03:04.971+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:04.971+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:03:04.988+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.197 seconds
+[2025-03-09T20:03:35.583+0000] {processor.py:186} INFO - Started process (PID=993) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:03:35.587+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:03:35.593+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:35.593+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:03:35.628+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:03:35.716+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:35.716+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:03:35.732+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:35.732+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:03:35.746+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.183 seconds
+[2025-03-09T20:04:06.337+0000] {processor.py:186} INFO - Started process (PID=1013) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:04:06.340+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:04:06.347+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:06.346+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:04:06.386+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:04:06.486+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:06.486+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:04:06.504+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:06.503+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:04:06.518+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.199 seconds
+[2025-03-09T20:04:37.126+0000] {processor.py:186} INFO - Started process (PID=1033) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:04:37.128+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:04:37.132+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:37.131+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:04:37.173+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:04:37.258+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:37.258+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:04:37.279+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:37.279+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:04:37.294+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.184 seconds
+[2025-03-09T20:05:07.849+0000] {processor.py:186} INFO - Started process (PID=1053) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:05:07.850+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:05:07.858+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:07.857+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:05:07.905+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:05:08.002+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:08.002+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:05:08.021+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:08.021+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:05:08.036+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.211 seconds
+[2025-03-09T20:05:38.695+0000] {processor.py:186} INFO - Started process (PID=1073) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:05:38.697+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:05:38.701+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:38.700+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:05:38.735+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:05:38.838+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:38.838+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:05:38.857+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:38.857+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:05:38.873+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.192 seconds
+[2025-03-09T20:06:09.440+0000] {processor.py:186} INFO - Started process (PID=1093) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:06:09.441+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:06:09.446+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:09.446+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:06:09.483+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:06:09.561+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:09.561+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:06:09.578+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:09.577+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:06:09.594+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.171 seconds
+[2025-03-09T20:06:40.156+0000] {processor.py:186} INFO - Started process (PID=1113) to work on /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:06:40.159+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_produtos.py for tasks to queue
+[2025-03-09T20:06:40.163+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:40.162+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:06:40.200+0000] {processor.py:925} INFO - DAG(s) 'schedule_produtos_bancarios' retrieved from /opt/airflow/dags/dag_b_produtos.py
+[2025-03-09T20:06:40.285+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:40.285+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:06:40.300+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:40.300+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_produtos_bancarios to 2025-03-09T06:22:00+00:00, run_after=2025-03-10T06:22:00+00:00
+[2025-03-09T20:06:40.315+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_produtos.py took 0.177 seconds

@@ -1,0 +1,420 @@
+[2025-03-09T19:41:13.281+0000] {processor.py:186} INFO - Started process (PID=190) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:41:13.282+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:41:13.283+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:13.283+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:41:13.292+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:13.291+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:41:13.292+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:41:13.309+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.033 seconds
+[2025-03-09T19:41:44.835+0000] {processor.py:186} INFO - Started process (PID=223) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:41:44.839+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:41:44.843+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:44.842+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:41:44.858+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:41:44.857+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:41:44.858+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:41:44.905+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.079 seconds
+[2025-03-09T19:42:15.063+0000] {processor.py:186} INFO - Started process (PID=243) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:42:15.064+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:42:15.065+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:15.065+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:42:15.071+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:15.071+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:42:15.071+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:42:15.085+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.026 seconds
+[2025-03-09T19:42:45.637+0000] {processor.py:186} INFO - Started process (PID=263) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:42:45.638+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:42:45.639+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:45.639+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:42:45.647+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:42:45.646+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:42:45.647+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:42:45.658+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.024 seconds
+[2025-03-09T19:43:16.100+0000] {processor.py:186} INFO - Started process (PID=283) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:43:16.101+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:43:16.102+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:16.102+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:43:16.108+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:16.107+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:43:16.108+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:43:16.118+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.020 seconds
+[2025-03-09T19:43:46.575+0000] {processor.py:186} INFO - Started process (PID=303) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:43:46.575+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:43:46.576+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:46.576+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:43:46.582+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:43:46.582+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:43:46.582+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:43:46.593+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.021 seconds
+[2025-03-09T19:44:17.031+0000] {processor.py:186} INFO - Started process (PID=323) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:44:17.031+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:44:17.032+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:17.032+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:44:17.038+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:17.038+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:44:17.038+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:44:17.048+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.020 seconds
+[2025-03-09T19:44:47.541+0000] {processor.py:186} INFO - Started process (PID=343) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:44:47.541+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:44:47.542+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:47.542+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:44:47.548+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:44:47.548+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:44:47.549+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:44:47.560+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.022 seconds
+[2025-03-09T19:45:18.012+0000] {processor.py:186} INFO - Started process (PID=363) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:45:18.012+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:45:18.014+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:18.014+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:45:18.020+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:18.020+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_b_clientes.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_b_clientes.py", line 9, in <module>
+    from airflow.dags.conf.utils import start_databricks_job, wait_for_job_to_finish
+ModuleNotFoundError: No module named 'airflow.dags'
+[2025-03-09T19:45:18.020+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:45:18.031+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.023 seconds
+[2025-03-09T19:45:28.163+0000] {processor.py:186} INFO - Started process (PID=371) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:45:28.164+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:45:28.166+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:28.166+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:45:28.201+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:45:28.288+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:28.288+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:45:28.702+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:45:28.702+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-08T08:00:00+00:00, run_after=2025-03-09T08:00:00+00:00
+[2025-03-09T19:45:28.718+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.564 seconds
+[2025-03-09T19:46:09.256+0000] {processor.py:186} INFO - Started process (PID=176) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:46:09.258+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:46:09.264+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:09.264+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:46:09.300+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:46:09.380+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:09.380+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:46:09.404+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:09.404+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:46:09.477+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.236 seconds
+[2025-03-09T19:46:40.516+0000] {processor.py:186} INFO - Started process (PID=209) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:46:40.521+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:46:40.537+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:40.536+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:46:40.661+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:46:40.868+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:40.868+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:46:40.905+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:46:40.904+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:46:40.941+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.467 seconds
+[2025-03-09T19:47:11.286+0000] {processor.py:186} INFO - Started process (PID=227) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:47:11.806+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:47:11.820+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:11.817+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:47:11.896+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:47:12.003+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:12.003+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:47:12.025+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:12.025+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:47:12.045+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.795 seconds
+[2025-03-09T19:47:42.521+0000] {processor.py:186} INFO - Started process (PID=249) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:47:42.523+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:47:42.526+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:42.526+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:47:42.567+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:47:42.693+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:42.693+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:47:42.718+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:47:42.718+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:47:42.736+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.220 seconds
+[2025-03-09T19:48:13.272+0000] {processor.py:186} INFO - Started process (PID=269) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:48:13.273+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:48:13.274+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:13.274+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:48:13.295+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:48:13.356+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:13.356+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:48:13.374+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:13.374+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:48:13.388+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.122 seconds
+[2025-03-09T19:48:43.792+0000] {processor.py:186} INFO - Started process (PID=289) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:48:43.798+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:48:43.800+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:43.799+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:48:43.825+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:48:43.875+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:43.875+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:48:43.892+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:48:43.891+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:48:43.903+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.116 seconds
+[2025-03-09T19:49:14.454+0000] {processor.py:186} INFO - Started process (PID=309) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:49:14.462+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:49:14.471+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:14.468+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:49:14.552+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:49:14.721+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:14.721+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:49:14.767+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:14.766+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:49:14.796+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.383 seconds
+[2025-03-09T19:49:45.252+0000] {processor.py:186} INFO - Started process (PID=330) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:49:45.259+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:49:45.263+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:45.263+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:49:45.291+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:49:45.353+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:45.353+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:49:45.370+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:49:45.370+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:49:45.382+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.141 seconds
+[2025-03-09T19:50:15.951+0000] {processor.py:186} INFO - Started process (PID=350) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:50:15.953+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:50:15.957+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:15.957+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:50:15.995+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:50:16.056+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:16.056+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:50:16.223+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:16.223+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:50:16.236+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.292 seconds
+[2025-03-09T19:50:46.855+0000] {processor.py:186} INFO - Started process (PID=370) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:50:46.863+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:50:46.869+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:46.869+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:50:46.906+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:50:46.979+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:46.979+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:50:47.125+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:50:47.125+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:50:47.138+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.293 seconds
+[2025-03-09T19:51:17.801+0000] {processor.py:186} INFO - Started process (PID=390) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:51:17.802+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:51:17.805+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:17.804+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:51:17.828+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:51:18.037+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:18.037+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:51:18.049+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:18.049+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:51:18.060+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.269 seconds
+[2025-03-09T19:51:48.645+0000] {processor.py:186} INFO - Started process (PID=410) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:51:48.651+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:51:48.658+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:48.657+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:51:48.696+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:51:48.904+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:48.904+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:51:48.916+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:51:48.916+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:51:48.931+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.296 seconds
+[2025-03-09T19:52:19.533+0000] {processor.py:186} INFO - Started process (PID=430) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:52:19.536+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:52:19.540+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:19.540+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:52:19.569+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:52:19.774+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:19.774+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:52:19.787+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:19.787+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:52:19.799+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.284 seconds
+[2025-03-09T19:52:50.285+0000] {processor.py:186} INFO - Started process (PID=450) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:52:50.290+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:52:50.292+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:50.292+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:52:50.380+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:52:50.422+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:50.422+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:52:50.432+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:52:50.432+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:52:50.443+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.170 seconds
+[2025-03-09T19:53:21.223+0000] {processor.py:186} INFO - Started process (PID=470) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:53:21.223+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:53:21.225+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:21.225+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:53:21.250+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:53:21.305+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:21.304+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:53:21.317+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:21.317+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:53:21.334+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.115 seconds
+[2025-03-09T19:53:51.917+0000] {processor.py:186} INFO - Started process (PID=490) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:53:51.919+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:53:51.921+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:51.921+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:53:51.962+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:53:52.017+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:52.017+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:53:52.032+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:53:52.031+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:53:52.044+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.139 seconds
+[2025-03-09T19:54:22.595+0000] {processor.py:186} INFO - Started process (PID=510) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:54:22.597+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:54:22.599+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:22.599+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:54:22.625+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:54:22.685+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:22.685+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:54:22.711+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:22.711+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:54:22.727+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.142 seconds
+[2025-03-09T19:54:53.240+0000] {processor.py:186} INFO - Started process (PID=530) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:54:53.244+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:54:53.247+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:53.246+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:54:53.268+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:54:53.311+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:53.311+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:54:53.322+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:54:53.322+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:54:53.332+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.100 seconds
+[2025-03-09T19:55:23.920+0000] {processor.py:186} INFO - Started process (PID=550) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:55:23.923+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:55:23.925+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:23.925+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:55:23.953+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:55:24.025+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:24.025+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:55:24.040+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:24.040+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:55:24.054+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.141 seconds
+[2025-03-09T19:55:54.596+0000] {processor.py:186} INFO - Started process (PID=570) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:55:54.599+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:55:54.602+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:54.602+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:55:54.632+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:55:54.713+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:54.713+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:55:54.732+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:55:54.732+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:55:54.748+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.164 seconds
+[2025-03-09T19:56:25.410+0000] {processor.py:186} INFO - Started process (PID=710) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:56:25.412+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:56:25.419+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:25.418+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:56:25.453+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:56:25.544+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:25.544+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:56:25.567+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:25.567+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:56:25.584+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.184 seconds
+[2025-03-09T19:56:56.039+0000] {processor.py:186} INFO - Started process (PID=730) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:56:56.041+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:56:56.045+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:56.044+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:56:56.078+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:56:56.138+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:56.138+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:56:56.154+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:56:56.154+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:56:56.166+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.138 seconds
+[2025-03-09T19:57:26.746+0000] {processor.py:186} INFO - Started process (PID=756) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:57:26.748+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:57:26.750+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:26.750+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:57:26.787+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:57:26.841+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:26.841+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:57:26.854+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:26.853+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:57:26.867+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.129 seconds
+[2025-03-09T19:57:57.420+0000] {processor.py:186} INFO - Started process (PID=776) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:57:57.427+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:57:57.430+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:57.429+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:57:57.475+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:57:57.573+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:57.572+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:57:57.590+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:57:57.590+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:57:57.609+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.207 seconds
+[2025-03-09T19:58:28.162+0000] {processor.py:186} INFO - Started process (PID=796) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:58:28.164+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:58:28.169+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:28.169+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:58:28.201+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:58:28.264+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:28.263+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:58:28.279+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:28.279+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:58:28.294+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.141 seconds
+[2025-03-09T19:58:58.915+0000] {processor.py:186} INFO - Started process (PID=816) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:58:58.919+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:58:58.926+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:58.926+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:58:58.965+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:58:59.055+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:59.055+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:58:59.075+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:58:59.075+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:58:59.092+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.190 seconds
+[2025-03-09T19:59:29.584+0000] {processor.py:186} INFO - Started process (PID=836) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:59:29.585+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T19:59:29.588+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:59:29.588+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:59:29.612+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T19:59:29.679+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:59:29.679+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:59:29.692+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:59:29.692+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T19:59:29.708+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.132 seconds
+[2025-03-09T20:00:00.234+0000] {processor.py:186} INFO - Started process (PID=856) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:00:00.239+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:00:00.243+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:00.243+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:00:00.271+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:00:00.361+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:00.361+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:00:00.376+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:00.376+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:00:00.392+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.170 seconds
+[2025-03-09T20:00:30.962+0000] {processor.py:186} INFO - Started process (PID=876) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:00:30.965+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:00:30.969+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:30.969+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:00:31.003+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:00:31.096+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:31.095+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:00:31.115+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:00:31.115+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:00:31.131+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.184 seconds
+[2025-03-09T20:01:01.688+0000] {processor.py:186} INFO - Started process (PID=896) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:01:01.690+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:01:01.693+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:01.693+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:01:01.727+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:01:01.816+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:01.816+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:01:01.832+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:01.832+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:01:01.849+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.174 seconds
+[2025-03-09T20:01:32.508+0000] {processor.py:186} INFO - Started process (PID=916) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:01:32.510+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:01:32.515+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:32.515+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:01:32.554+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:01:32.642+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:32.641+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:01:32.662+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:01:32.661+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:01:32.680+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.186 seconds
+[2025-03-09T20:02:03.237+0000] {processor.py:186} INFO - Started process (PID=936) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:02:03.239+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:02:03.241+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:03.241+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:02:03.287+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:02:03.365+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:03.365+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:02:03.381+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:03.381+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:02:03.398+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.176 seconds
+[2025-03-09T20:02:34.020+0000] {processor.py:186} INFO - Started process (PID=956) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:02:34.024+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:02:34.031+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:34.031+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:02:34.067+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:02:34.167+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:34.167+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:02:34.192+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:02:34.191+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:02:34.207+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.200 seconds
+[2025-03-09T20:03:04.814+0000] {processor.py:186} INFO - Started process (PID=976) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:03:04.817+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:03:04.824+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:04.824+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:03:04.861+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:03:04.953+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:04.953+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:03:04.975+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:04.975+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:03:04.990+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.197 seconds
+[2025-03-09T20:03:35.583+0000] {processor.py:186} INFO - Started process (PID=996) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:03:35.585+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:03:35.589+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:35.588+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:03:35.626+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:03:35.716+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:35.716+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:03:35.732+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:03:35.732+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:03:35.747+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.183 seconds
+[2025-03-09T20:04:06.342+0000] {processor.py:186} INFO - Started process (PID=1016) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:04:06.344+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:04:06.347+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:06.347+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:04:06.396+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:04:06.486+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:06.485+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:04:06.504+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:06.504+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:04:06.518+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.188 seconds
+[2025-03-09T20:04:37.126+0000] {processor.py:186} INFO - Started process (PID=1035) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:04:37.128+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:04:37.132+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:37.131+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:04:37.170+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:04:37.258+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:37.258+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:04:37.279+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:04:37.278+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:04:37.294+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.185 seconds
+[2025-03-09T20:05:07.849+0000] {processor.py:186} INFO - Started process (PID=1056) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:05:07.850+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:05:07.856+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:07.856+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:05:07.897+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:05:08.000+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:08.000+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:05:08.021+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:08.021+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:05:08.036+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.211 seconds
+[2025-03-09T20:05:38.700+0000] {processor.py:186} INFO - Started process (PID=1076) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:05:38.704+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:05:38.708+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:38.708+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:05:38.738+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:05:38.840+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:38.840+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:05:38.859+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:05:38.859+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:05:38.873+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.181 seconds
+[2025-03-09T20:06:09.440+0000] {processor.py:186} INFO - Started process (PID=1096) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:06:09.445+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:06:09.447+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:09.447+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:06:09.484+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:06:09.558+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:09.558+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:06:09.578+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:09.578+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:06:09.599+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.172 seconds
+[2025-03-09T20:06:40.156+0000] {processor.py:186} INFO - Started process (PID=1116) to work on /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:06:40.158+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_b_clientes.py for tasks to queue
+[2025-03-09T20:06:40.162+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:40.161+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:06:40.201+0000] {processor.py:925} INFO - DAG(s) 'schedule_clientes' retrieved from /opt/airflow/dags/dag_b_clientes.py
+[2025-03-09T20:06:40.283+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:40.282+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T20:06:40.299+0000] {logging_mixin.py:190} INFO - [2025-03-09T20:06:40.299+0000] {dag.py:4180} INFO - Setting next_dagrun for schedule_clientes to 2025-03-09T08:00:00+00:00, run_after=2025-03-10T08:00:00+00:00
+[2025-03-09T20:06:40.316+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_b_clientes.py took 0.172 seconds

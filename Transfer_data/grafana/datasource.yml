@@ -1,0 +1,20 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+
+  - name: Azure Monitor
+    type: grafana-azure-monitor-datasource
+    access: proxy
+    jsonData:
+      azureAuthType: clientsecret
+      cloudName: azuremonitor
+      tenantId: "cbf9695f-9b6d-47e9-ac31-f2c9db824f06"
+      clientId: "6df1ff0a-81f4-41a3-b882-c866185734aa"
+      clientSecret: "VUB8Q~v6R0Rmbkv.odflS5vTnn11s1nfs5JRHcg8"
+    secureJsonData:
+      clientSecret: "VUB8Q~v6R0Rmbkv.odflS5vTnn11s1nfs5JRHcg8"

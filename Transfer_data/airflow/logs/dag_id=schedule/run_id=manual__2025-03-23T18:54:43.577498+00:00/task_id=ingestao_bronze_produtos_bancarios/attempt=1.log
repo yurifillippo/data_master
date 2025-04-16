@@ -1,0 +1,82 @@
+[2025-03-23T18:54:51.742+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-23T18:54:51.796+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: schedule.ingestao_bronze_produtos_bancarios manual__2025-03-23T18:54:43.577498+00:00 [queued]>
+[2025-03-23T18:54:51.821+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: schedule.ingestao_bronze_produtos_bancarios manual__2025-03-23T18:54:43.577498+00:00 [queued]>
+[2025-03-23T18:54:51.822+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-03-23T18:54:51.848+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): ingestao_bronze_produtos_bancarios> on 2025-03-23 18:54:43.577498+00:00
+[2025-03-23T18:54:51.854+0000] {standard_task_runner.py:72} INFO - Started process 1324 to run task
+[2025-03-23T18:54:51.861+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'schedule', 'ingestao_bronze_produtos_bancarios', 'manual__2025-03-23T18:54:43.577498+00:00', '--job-id', '1903', '--raw', '--subdir', 'DAGS_FOLDER/dag_master.py', '--cfg-path', '/tmp/tmpg4fonstc']
+[2025-03-23T18:54:51.868+0000] {standard_task_runner.py:105} INFO - Job 1903: Subtask ingestao_bronze_produtos_bancarios
+[2025-03-23T18:54:51.903+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-03-23T18:54:51.960+0000] {task_command.py:467} INFO - Running <TaskInstance: schedule.ingestao_bronze_produtos_bancarios manual__2025-03-23T18:54:43.577498+00:00 [running]> on host b612e1a2c49c
+[2025-03-23T18:54:52.050+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='schedule' AIRFLOW_CTX_TASK_ID='ingestao_bronze_produtos_bancarios' AIRFLOW_CTX_EXECUTION_DATE='2025-03-23T18:54:43.577498+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-03-23T18:54:43.577498+00:00'
+[2025-03-23T18:54:52.052+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-23T18:54:52.589+0000] {logging_mixin.py:190} INFO - Job iniciado com sucesso. Run ID: 805733833058278
+[2025-03-23T18:58:06.021+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/opt/airflow/dags/dag_master.py", line 157, in trigger_and_wait_produtos_bancarios
+    wait_for_job_to_finish(run_id, databricks_url, databricks_token)
+  File "/opt/airflow/dags/conf/utils.py", line 57, in wait_for_job_to_finish
+    raise Exception(f"Job falhou. Detalhes: {response.json()}")
+Exception: Job falhou. Detalhes: {'job_id': 1047983050072156, 'run_id': 805733833058278, 'creator_user_name': 'maria_apmattos@hotmail.com', 'number_in_job': 805733833058278, 'original_attempt_run_id': 805733833058278, 'state': {'life_cycle_state': 'TERMINATED', 'result_state': 'FAILED', 'state_message': 'Workload failed, see run output for details', 'user_cancelled_or_timedout': False, 'queue_reason': 'Queued due to reaching maximum concurrent runs of 1.'}, 'task': {'notebook_task': {'notebook_path': '/Workspace/Users/maria_apmattos@hotmail.com/data_master/TemplatesDatabricks/Ingestion_bronze_template', 'base_parameters': {'param1': 'b_cad', 'param5': 'csv', 'param4': 'append', 'param3': "['produto_id', 'nome', 'descricao', 'categoria']", 'param6': ',', 'param2': 'produtos', 'param7': '20250207'}, 'source': 'WORKSPACE'}}, 'cluster_spec': {'existing_cluster_id': '0129-031548-z9ttog72'}, 'cluster_instance': {'cluster_id': '0129-031548-z9ttog72', 'spark_context_id': '319581178355625606'}, 'overriding_parameters': {'notebook_params': {'param1': 'b_cad', 'param2': 'produtos', 'param3': "['produto_id', 'nome', 'descricao', 'categoria']", 'param4': 'append', 'param5': 'csv', 'param6': ',', 'param7': '20250323'}}, 'start_time': 1742756092435, 'setup_duration': 131000, 'execution_duration': 56000, 'cleanup_duration': 0, 'end_time': 1742756280116, 'run_duration': 187681, 'queue_duration': 127955, 'trigger': 'ONE_TIME', 'run_name': 'Camada Bronze - Template_Ingestion Tabela b_cad.produtos', 'run_page_url': 'https://adb-2740266284098548.8.azuredatabricks.net/?o=2740266284098548#job/1047983050072156/run/805733833058278', 'run_type': 'JOB_RUN', 'attempt_number': 0, 'format': 'SINGLE_TASK', 'status': {'state': 'TERMINATED', 'termination_details': {'code': 'RUN_EXECUTION_ERROR', 'type': 'CLIENT_ERROR', 'message': 'Workload failed, see run output for details'}, 'queue_details': {'code': 'MAX_CONCURRENT_RUNS_REACHED', 'message': 'Queued due to reaching maximum concurrent runs of 1.'}}, 'job_run_id': 805733833058278}
+[2025-03-23T18:58:06.051+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=schedule, task_id=ingestao_bronze_produtos_bancarios, run_id=manual__2025-03-23T18:54:43.577498+00:00, execution_date=20250323T185443, start_date=20250323T185451, end_date=20250323T185806
+[2025-03-23T18:58:06.077+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-23T18:58:06.078+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 1903 for task ingestao_bronze_produtos_bancarios (Job falhou. Detalhes: {'job_id': 1047983050072156, 'run_id': 805733833058278, 'creator_user_name': 'maria_apmattos@hotmail.com', 'number_in_job': 805733833058278, 'original_attempt_run_id': 805733833058278, 'state': {'life_cycle_state': 'TERMINATED', 'result_state': 'FAILED', 'state_message': 'Workload failed, see run output for details', 'user_cancelled_or_timedout': False, 'queue_reason': 'Queued due to reaching maximum concurrent runs of 1.'}, 'task': {'notebook_task': {'notebook_path': '/Workspace/Users/maria_apmattos@hotmail.com/data_master/TemplatesDatabricks/Ingestion_bronze_template', 'base_parameters': {'param1': 'b_cad', 'param5': 'csv', 'param4': 'append', 'param3': "['produto_id', 'nome', 'descricao', 'categoria']", 'param6': ',', 'param2': 'produtos', 'param7': '20250207'}, 'source': 'WORKSPACE'}}, 'cluster_spec': {'existing_cluster_id': '0129-031548-z9ttog72'}, 'cluster_instance': {'cluster_id': '0129-031548-z9ttog72', 'spark_context_id': '319581178355625606'}, 'overriding_parameters': {'notebook_params': {'param1': 'b_cad', 'param2': 'produtos', 'param3': "['produto_id', 'nome', 'descricao', 'categoria']", 'param4': 'append', 'param5': 'csv', 'param6': ',', 'param7': '20250323'}}, 'start_time': 1742756092435, 'setup_duration': 131000, 'execution_duration': 56000, 'cleanup_duration': 0, 'end_time': 1742756280116, 'run_duration': 187681, 'queue_duration': 127955, 'trigger': 'ONE_TIME', 'run_name': 'Camada Bronze - Template_Ingestion Tabela b_cad.produtos', 'run_page_url': 'https://adb-2740266284098548.8.azuredatabricks.net/?o=2740266284098548#job/1047983050072156/run/805733833058278', 'run_type': 'JOB_RUN', 'attempt_number': 0, 'format': 'SINGLE_TASK', 'status': {'state': 'TERMINATED', 'termination_details': {'code': 'RUN_EXECUTION_ERROR', 'type': 'CLIENT_ERROR', 'message': 'Workload failed, see run output for details'}, 'queue_details': {'code': 'MAX_CONCURRENT_RUNS_REACHED', 'message': 'Queued due to reaching maximum concurrent runs of 1.'}}, 'job_run_id': 805733833058278}; 1324)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/opt/airflow/dags/dag_master.py", line 157, in trigger_and_wait_produtos_bancarios
+    wait_for_job_to_finish(run_id, databricks_url, databricks_token)
+  File "/opt/airflow/dags/conf/utils.py", line 57, in wait_for_job_to_finish
+    raise Exception(f"Job falhou. Detalhes: {response.json()}")
+Exception: Job falhou. Detalhes: {'job_id': 1047983050072156, 'run_id': 805733833058278, 'creator_user_name': 'maria_apmattos@hotmail.com', 'number_in_job': 805733833058278, 'original_attempt_run_id': 805733833058278, 'state': {'life_cycle_state': 'TERMINATED', 'result_state': 'FAILED', 'state_message': 'Workload failed, see run output for details', 'user_cancelled_or_timedout': False, 'queue_reason': 'Queued due to reaching maximum concurrent runs of 1.'}, 'task': {'notebook_task': {'notebook_path': '/Workspace/Users/maria_apmattos@hotmail.com/data_master/TemplatesDatabricks/Ingestion_bronze_template', 'base_parameters': {'param1': 'b_cad', 'param5': 'csv', 'param4': 'append', 'param3': "['produto_id', 'nome', 'descricao', 'categoria']", 'param6': ',', 'param2': 'produtos', 'param7': '20250207'}, 'source': 'WORKSPACE'}}, 'cluster_spec': {'existing_cluster_id': '0129-031548-z9ttog72'}, 'cluster_instance': {'cluster_id': '0129-031548-z9ttog72', 'spark_context_id': '319581178355625606'}, 'overriding_parameters': {'notebook_params': {'param1': 'b_cad', 'param2': 'produtos', 'param3': "['produto_id', 'nome', 'descricao', 'categoria']", 'param4': 'append', 'param5': 'csv', 'param6': ',', 'param7': '20250323'}}, 'start_time': 1742756092435, 'setup_duration': 131000, 'execution_duration': 56000, 'cleanup_duration': 0, 'end_time': 1742756280116, 'run_duration': 187681, 'queue_duration': 127955, 'trigger': 'ONE_TIME', 'run_name': 'Camada Bronze - Template_Ingestion Tabela b_cad.produtos', 'run_page_url': 'https://adb-2740266284098548.8.azuredatabricks.net/?o=2740266284098548#job/1047983050072156/run/805733833058278', 'run_type': 'JOB_RUN', 'attempt_number': 0, 'format': 'SINGLE_TASK', 'status': {'state': 'TERMINATED', 'termination_details': {'code': 'RUN_EXECUTION_ERROR', 'type': 'CLIENT_ERROR', 'message': 'Workload failed, see run output for details'}, 'queue_details': {'code': 'MAX_CONCURRENT_RUNS_REACHED', 'message': 'Queued due to reaching maximum concurrent runs of 1.'}}, 'job_run_id': 805733833058278}
+[2025-03-23T18:58:06.083+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-03-23T18:58:06.113+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-03-23T18:58:06.116+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

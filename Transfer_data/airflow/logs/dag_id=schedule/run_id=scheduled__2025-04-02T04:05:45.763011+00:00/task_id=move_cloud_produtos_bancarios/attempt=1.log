@@ -1,0 +1,181 @@
+[2025-04-03T04:50:49.126+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-03T04:50:49.148+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: schedule.move_cloud_produtos_bancarios scheduled__2025-04-02T04:05:45.763011+00:00 [queued]>
+[2025-04-03T04:50:49.154+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: schedule.move_cloud_produtos_bancarios scheduled__2025-04-02T04:05:45.763011+00:00 [queued]>
+[2025-04-03T04:50:49.154+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-04-03T04:50:49.163+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): move_cloud_produtos_bancarios> on 2025-04-02 04:05:45.763011+00:00
+[2025-04-03T04:50:49.169+0000] {standard_task_runner.py:72} INFO - Started process 1525 to run task
+[2025-04-03T04:50:49.173+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'schedule', 'move_cloud_produtos_bancarios', 'scheduled__2025-04-02T04:05:45.763011+00:00', '--job-id', '1999', '--raw', '--subdir', 'DAGS_FOLDER/dag_master.py', '--cfg-path', '/tmp/tmpk6evaawb']
+[2025-04-03T04:50:49.175+0000] {standard_task_runner.py:105} INFO - Job 1999: Subtask move_cloud_produtos_bancarios
+[2025-04-03T04:50:49.188+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-04-03T04:50:49.219+0000] {task_command.py:467} INFO - Running <TaskInstance: schedule.move_cloud_produtos_bancarios scheduled__2025-04-02T04:05:45.763011+00:00 [running]> on host dca2c4cc2d1b
+[2025-04-03T04:50:49.220+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.8/site-packages/airflow/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-04-03T04:50:49.279+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='schedule' AIRFLOW_CTX_TASK_ID='move_cloud_produtos_bancarios' AIRFLOW_CTX_EXECUTION_DATE='2025-04-02T04:05:45.763011+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-02T04:05:45.763011+00:00'
+[2025-04-03T04:50:49.280+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-04-03T04:50:49.289+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-04-03T04:50:49.290+0000] {subprocess.py:88} INFO - Running command: ['/bin/bash', '-c', 'docker exec linux_python /bin/bash -c \'/workspace/scripts/run_move_file.sh /path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv table_ingestion_files/produtos/20250403/produtos_1743655849.csv && echo "Script Executado com Sucesso!"\'']
+[2025-04-03T04:50:49.296+0000] {subprocess.py:99} INFO - Output:
+[2025-04-03T04:50:49.788+0000] {subprocess.py:106} INFO - 2025-04-03 04:50:49,785 - INFO - Iniciando o upload do arquivo '/path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv' para o blob 'table_ingestion_files/produtos/20250403/produtos_1743655849.csv' no container 'filedataimport'.
+[2025-04-03T04:50:49.791+0000] {subprocess.py:106} INFO - 2025-04-03 04:50:49,785 - INFO - Blob URL gerada: https://stagedatamaster.blob.core.windows.net/filedataimport/table_ingestion_files/produtos/20250403/produtos_1743655849.csv?sp=cw&st=2024-10-20T02:42:12Z&se=2026-10-20T10:42:12Z&spr=https&sv=2022-11-02&sr=c&sig=MaoRwZWwtKEx5vDafwkbeHkx1Rir6bWRYy0FB3OOs58%3D
+[2025-04-03T04:50:49.796+0000] {subprocess.py:106} INFO - 2025-04-03 04:50:49,794 - INFO - Enviando o arquivo '/path/to/move_cloud/produtos_bancarios/produtos_bancarios.csv' para o Azure Blob Storage.
+[2025-04-03T04:50:49.801+0000] {subprocess.py:106} INFO - 2025-04-03 04:50:49,798 - INFO - Request URL: 'https://stagedatamaster.blob.core.windows.net/filedataimport/table_ingestion_files/produtos/20250403/produtos_1743655849.csv?sp=REDACTED&st=REDACTED&se=REDACTED&spr=REDACTED&sv=REDACTED&sr=REDACTED&sig=REDACTED'
+[2025-04-03T04:50:49.802+0000] {subprocess.py:106} INFO - Request method: 'PUT'
+[2025-04-03T04:50:49.802+0000] {subprocess.py:106} INFO - Request headers:
+[2025-04-03T04:50:49.802+0000] {subprocess.py:106} INFO -     'Content-Length': '8060'
+[2025-04-03T04:50:49.803+0000] {subprocess.py:106} INFO -     'x-ms-blob-type': 'REDACTED'
+[2025-04-03T04:50:49.803+0000] {subprocess.py:106} INFO -     'If-None-Match': '*'
+[2025-04-03T04:50:49.804+0000] {subprocess.py:106} INFO -     'x-ms-version': 'REDACTED'
+[2025-04-03T04:50:49.804+0000] {subprocess.py:106} INFO -     'Content-Type': 'application/octet-stream'
+[2025-04-03T04:50:49.804+0000] {subprocess.py:106} INFO -     'Accept': 'application/xml'
+[2025-04-03T04:50:49.805+0000] {subprocess.py:106} INFO -     'User-Agent': 'azsdk-python-storage-blob/12.24.1 Python/3.12.9 (Linux-6.10.14-linuxkit-aarch64-with-glibc2.36)'
+[2025-04-03T04:50:49.805+0000] {subprocess.py:106} INFO -     'x-ms-date': 'REDACTED'
+[2025-04-03T04:50:49.805+0000] {subprocess.py:106} INFO -     'x-ms-client-request-id': '36e1ec34-1047-11f0-af45-0242ac120004'
+[2025-04-03T04:50:49.805+0000] {subprocess.py:106} INFO - A body is sent with the request
+[2025-04-03T04:50:49.852+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-04-03T04:50:49.960+0000] {process_utils.py:132} INFO - Sending 15 to group 1525. PIDs of all processes in the group: [1529, 1525]
+[2025-04-03T04:50:49.971+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 1525
+[2025-04-03T04:50:49.977+0000] {taskinstance.py:3094} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-04-03T04:50:50.188+0000] {taskinstance.py:3095} ERROR - Stacktrace: 
+  File "/home/airflow/.local/bin/airflow", line 8, in <module>
+    sys.exit(main())
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/__main__.py", line 62, in main
+    args.func(args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/providers_configuration_loader.py", line 55, in wrapped_function
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/scheduler_command.py", line 56, in scheduler
+    run_command_with_daemon_option(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/daemon_utils.py", line 86, in run_command_with_daemon_option
+    callback()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/scheduler_command.py", line 59, in <lambda>
+    callback=lambda: _run_scheduler_job(args),
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/scheduler_command.py", line 47, in _run_scheduler_job
+    run_job(job=job_runner.job, execute_callable=job_runner._execute)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/jobs/job.py", line 421, in run_job
+    return execute_job(job, execute_callable=execute_callable)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/jobs/job.py", line 450, in execute_job
+    ret = execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/jobs/scheduler_job_runner.py", line 990, in _execute
+    executor.start()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/executors/local_executor.py", line 392, in start
+    self.impl.start()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/executors/local_executor.py", line 330, in start
+    worker.start()
+  File "/usr/local/lib/python3.8/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "/usr/local/lib/python3.8/multiprocessing/context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "/usr/local/lib/python3.8/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/usr/local/lib/python3.8/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/usr/local/lib/python3.8/multiprocessing/popen_fork.py", line 75, in _launch
+    code = process_obj._bootstrap(parent_sentinel=child_r)
+  File "/usr/local/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/executors/local_executor.py", line 80, in run
+    return super().run()
+  File "/usr/local/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/traces/tracer.py", line 58, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/executors/local_executor.py", line 211, in do_work
+    self.execute_work(key=key, command=command)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/traces/tracer.py", line 58, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/executors/local_executor.py", line 100, in execute_work
+    state = self._execute_work_in_fork(command)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/traces/tracer.py", line 58, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/executors/local_executor.py", line 142, in _execute_work_in_fork
+    args.func(args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 254, in _run_task_by_selected_method
+    return _run_task_by_local_task_job(args, ti)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 322, in _run_task_by_local_task_job
+    ret = run_job(job=job_runner.job, execute_callable=job_runner._execute)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/jobs/job.py", line 421, in run_job
+    return execute_job(job, execute_callable=execute_callable)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/jobs/job.py", line 450, in execute_job
+    ret = execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/jobs/local_task_job_runner.py", line 171, in _execute
+    self.task_runner.start()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/task/task_runner/standard_task_runner.py", line 55, in start
+    self.process = self._start_by_fork()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 257, in execute
+    result = self._run_inline_command(bash_path=bash_path, env=env)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 284, in _run_inline_command
+    return self.subprocess_hook.run_command(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/hooks/subprocess.py", line 104, in run_command
+    for raw_line in iter(self.sub_process.stdout.readline, b""):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3095, in signal_handler
+    self.log.error("Stacktrace: \n%s", "".join(traceback.format_stack()))
+
+[2025-04-03T04:50:50.277+0000] {subprocess.py:117} INFO - Sending SIGTERM signal to process group
+[2025-04-03T04:50:50.600+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 257, in execute
+    result = self._run_inline_command(bash_path=bash_path, env=env)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 284, in _run_inline_command
+    return self.subprocess_hook.run_command(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/hooks/subprocess.py", line 104, in run_command
+    for raw_line in iter(self.sub_process.stdout.readline, b""):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 3097, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2025-04-03T04:50:50.643+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=schedule, task_id=move_cloud_produtos_bancarios, run_id=scheduled__2025-04-02T04:05:45.763011+00:00, execution_date=20250402T040545, start_date=20250403T045049, end_date=20250403T045050
+[2025-04-03T04:50:50.918+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-04-03T04:50:50.997+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1529, status='terminated', started='04:50:48') (1529) terminated with exit code None
+[2025-04-03T04:50:51.013+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1525, status='terminated', exitcode=2, started='04:50:48') (1525) terminated with exit code 2
+[2025-04-03T04:50:51.027+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 143
+[2025-04-03T04:50:54.181+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-04-03T04:50:54.202+0000] {standard_task_runner.py:217} INFO - Process not found (most likely exited), stop collecting metrics
