@@ -131,7 +131,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_produtos_bancarios\"} or vector(0)) by (produtos) )",
+          "expr": "clamp_min(\n  3 - (\n    count(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes\"} > 0) \n  + count(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes_produtos\"} > 0) \n  + count(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_produtos_bancarios\"} > 0)\n  ),\n  0\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -172,7 +172,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>",
+        "content": "&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.2",
@@ -238,7 +238,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"move_cloud_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"move_cloud_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"move_cloud_produtos_bancarios\"} or vector(0)) by (produtos) )",
+          "expr": "clamp_min(\n  3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"move_cloud_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"move_cloud_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"move_cloud_produtos_bancarios\"} or vector(0)) by (produtos)   ),\n  0\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -279,7 +279,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>",
+        "content": "&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.2",
@@ -345,7 +345,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"expurgo_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"expurgo_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"expurgo_produtos_bancarios\"} or vector(0)) by (produtos) )",
+          "expr": "clamp_min(\n  3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"expurgo_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"expurgo_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"expurgo_produtos_bancarios\"} or vector(0)) by (produtos) \n  ),\n  0\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -386,7 +386,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>",
+        "content": "&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n&nbsp;\n<span style=\"font-size: 42px;\">→</span>",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.2",
@@ -452,7 +452,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"ingestao_bronze_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"ingestao_bronze_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"ingestao_bronze_produtos_bancarios\"} or vector(0)) by (produtos) )",
+          "expr": "clamp_min(\n  3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"ingestao_bronze_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"ingestao_bronze_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"ingestao_bronze_produtos_bancarios\"} or vector(0)) by (produtos)   ),\n  0\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1258,7 +1258,7 @@
           "refId": "A"
         }
       ],
-      "title": "Ingestion Success Rate and Failures",
+      "title": "Ingestion Success Rate and Failures - 1d",
       "type": "piechart"
     },
     {
@@ -1488,7 +1488,7 @@
           "refId": "A"
         }
       ],
-      "title": "Average rows inserted per table",
+      "title": "Average rows inserted per table - 1d",
       "type": "barchart"
     },
     {
@@ -1665,7 +1665,7 @@
           "refId": "A"
         }
       ],
-      "title": "Alert Duplicate Ingestion",
+      "title": "Alert Duplicate Ingestion - 1d",
       "type": "table"
     }
   ],
@@ -1684,6 +1684,6 @@
   "timezone": "browser",
   "title": "Monitoring Ingestion",
   "uid": "fee3k1qijqw3kf",
-  "version": 144,
+  "version": 145,
   "weekStart": ""
 }
