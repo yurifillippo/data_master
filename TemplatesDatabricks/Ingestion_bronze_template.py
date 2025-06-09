@@ -25,6 +25,20 @@ import json
 #Funções Compartilhadas (Utilitárias)
 #Autenticator
 def autenticator(logger):
+    """
+    Performs authentication with an Azure Data Lake Storage account.
+
+    Args:
+        logger (object): Logger object used to record authentication status messages.
+
+    Returns:
+        None: The function does not return a value, but logs either a success or an error message.
+
+    Example:
+        Authentication carried out successfully
+        or
+        Authentication failed: Secret not found
+    """
     try:
         #sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
         storage_account_name = "datalakedtm"
@@ -45,6 +59,24 @@ def autenticator(logger):
 
 #Definições para log:
 def build_signature(message, secret):
+    """
+    Builds a base64-encoded HMAC-SHA256 signature for a given message and secret.
+
+    Args:
+        message (string): The input message to be signed.
+        secret (string): Base64-encoded secret key used to generate the HMAC signature.
+
+    Returns:
+        string: Base64-encoded HMAC-SHA256 signature.
+
+    Example:
+        Input:
+            message = "example-message"
+            secret  = "c2VjcmV0S2V5MTIz"  # base64 of "secretKey123"
+        
+        Output:
+            "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY=="
+    """
     key_bytes = base64.b64decode(secret)
     message_bytes = bytes(message, encoding="utf-8")
     hmacsha256 = hmac.new(key_bytes, message_bytes, digestmod=hashlib.sha256).digest()
@@ -53,6 +85,29 @@ def build_signature(message, secret):
 
 #Post do log no azure monitor
 def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
+    """
+    Sends log data to Azure Log Analytics using the HTTP Data Collector API.
+
+    Args:
+        log_data (string): JSON-formatted string containing the data to be sent.
+        WORKSPACE_ID (string): Azure Log Analytics Workspace ID.
+        SHARED_KEY (string): Base64-encoded shared key (primary or secondary) for authentication.
+
+    Returns:
+        None: Prints the result of the request — "Accepted" if successful, or the response content and status code if failed.
+
+    Example:
+        Input:
+            log_data = '{"event": "data_loaded", "status": "success"}'
+            WORKSPACE_ID = "12345678-aaaa-bbbb-cccc-1234567890ab"
+            SHARED_KEY = "c2hhcmVkS2V5QmFzZTY0=="  # base64 of the shared key
+
+        Output:
+            Accepted
+            or
+            Response: b'{"error":...}'
+            Response code: 403
+    """
     date_string = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
     content_length = len(log_data)
     string_to_hash = f"POST\n{content_length}\napplication/json\nx-ms-date:{date_string}\n/api/logs"
@@ -84,11 +139,11 @@ def load_data_ingestion(table, logger, type_file, dat_carga_origin, sep=","):
     Args:
         path (string): stage path where the raw data is located..
         header (string/boolean): true or false
-        type_file (string): Tipo do arquivo que seja utilizado na ingestão (csv, txt, parquet, avro).
+        type_file (string): Type file (csv, txt, parquet, avro).
         sep (string): Data separator within the file.
 
     Returns:
-        Dataframe: O resultado da multiplicação.
+        Dataframe: The result of multiplication.
 
     Example:
         +-----+-----+---------------+

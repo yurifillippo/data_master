@@ -19,6 +19,25 @@ import json
 #Funções Compartilhadas (Utilitárias)
 #Autenticator
 def autenticator(logger):
+    """
+    Performs authentication to access Azure Data Lake Storage using secrets stored in Databricks.
+
+    Args:
+        logger (object): Logger instance used to record authentication status (info or error).
+
+    Returns:
+        None: Logs a success message if authentication is successful or an error message if it fails.
+
+    Example:
+        Input:
+            logger = logging.getLogger("AuthLogger")
+            autenticator(logger)
+
+        Output (log):
+            INFO: Authentication carried out successfully
+            or
+            ERROR: Authentication failed: <error_message>
+    """
     try:
         sas_token = dbutils.secrets.get(scope="storage_datamaster", key="data_master")
         storage_account_name = "datalakedtm"
@@ -39,6 +58,24 @@ def autenticator(logger):
 
 #Definições para log:
 def build_signature(message, secret):
+    """
+    Generates a base64-encoded HMAC-SHA256 signature for a given message using a secret key.
+
+    Args:
+        message (string): The message string to be signed.
+        secret (string): The base64-encoded secret key used for signing.
+
+    Returns:
+        string: The base64-encoded HMAC-SHA256 signature.
+
+    Example:
+        Input:
+            message = "POST\n123\napplication/json\nx-ms-date:Mon, 01 Jan 2024 00:00:00 GMT\n/api/logs"
+            secret = "bXlzZWNyZXRrZXk="  # base64 for "mysecretkey"
+
+        Output:
+            "V1fP0d0wTqEiPfboDmp4wGLAqYgR3AnX2kYY5sWwU+s="
+    """
     key_bytes = base64.b64decode(secret)
     message_bytes = bytes(message, encoding="utf-8")
     hmacsha256 = hmac.new(key_bytes, message_bytes, digestmod=hashlib.sha256).digest()
@@ -47,6 +84,29 @@ def build_signature(message, secret):
 
 #Post do log no azure monitor
 def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
+    """
+    Envia dados de log para o Azure Log Analytics via API REST usando autenticação Shared Key.
+
+    Args:
+        log_data (string): Dados JSON formatados como string para envio.
+        WORKSPACE_ID (string): ID do workspace do Azure Log Analytics.
+        SHARED_KEY (string): Chave compartilhada base64 para autenticação da API.
+
+    Returns:
+        None: Imprime no console o status da requisição (aceito ou erro).
+
+    Example:
+        log_data = '[{"Time": "2024-06-09T12:00:00Z", "Level": "INFO", "Message": "Process started"}]'
+        WORKSPACE_ID = "abc123xyz"
+        SHARED_KEY = "base64encodedkey=="
+        post_data(log_data, WORKSPACE_ID, SHARED_KEY)
+
+        Output:
+            Accepted
+            ou
+            Response: <mensagem de erro>
+            Response code: <código HTTP>
+    """
     date_string = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
     content_length = len(log_data)
     string_to_hash = f"POST\n{content_length}\napplication/json\nx-ms-date:{date_string}\n/api/logs"
@@ -71,6 +131,24 @@ def post_data(log_data, WORKSPACE_ID, SHARED_KEY):
 
 #Coletar tempo de execução em segundos
 def monitor_execution_time(start_time):
+    """
+    Calculates the execution time in seconds from a given start time until the current time.
+
+    Args:
+        start_time (datetime): The starting time of the process (usually obtained via datetime.now()).
+
+    Returns:
+        float: The duration in seconds from start_time to the current moment.
+
+    Example:
+        Input:
+            start_time = datetime.now()
+            # ... executar alguma lógica ...
+            monitor_execution_time(start_time)
+        
+        Output:
+            12.537891
+    """
     
     end_time = datetime.now()
     duration = end_time - start_time
@@ -80,14 +158,14 @@ def monitor_execution_time(start_time):
 
 def verificar_campos(metricas):
     """
-    Verifica se todos os campos no dicionário 'metricas' são diferentes de None
-    e atualiza o campo 'execution_succes' de acordo.
+    Checks if all fields in the 'metrics' dictionary are not equal to None
+    and updates the 'execution_succes' field accordingly.
 
     Args:
-        metricas (dict): Dicionário contendo as métricas.
+        metricas (dict): Dictionary containing measurements.
 
     Returns:
-        dict: Dicionário atualizado com o campo 'execution_succes'.
+        dict: Dictionary updated with 'execution_succes' field.
     """
     # Verifica se todos os valores no dicionário são diferentes de None, exceto 'execution_succes'
     all_fields_present = all(value is not None for key, value in metricas.items() if key != 'execution_succes')
