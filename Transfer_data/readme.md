@@ -33,7 +33,6 @@ a geração da camada Gold.
 ### `grafana/`
 
 - **dashboard.yml**: Arquivo de configuração do Grafana.
-- **monitoring_ingestion.json**: Json de criação da Dashboard de monitoramento dos processos de ingestão.
 - **resource.json**: Json de criação da Dashboard dos recursos utilizados na Cloud.
 - **datasource.yml**: Arquivo de configuração do Grafana.
 
