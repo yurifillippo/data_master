@@ -30,7 +30,7 @@ dag_master = DAG(
     'schedule_data_master',
     default_args=default_args,
     description='Scheduler datamaster',
-    schedule_interval=None,
+    schedule_interval=None, #Não schedulado para demonstração do case
     catchup=False,  # Evita execução retroativa
 )
 
