@@ -56,9 +56,5 @@ def wait_for_job_to_finish(run_id, databricks_url, databricks_token):
     if response.json()['state']['result_state'] == 'FAILED':
         raise Exception(f"Job falhou. Detalhes: {response.json()}")
 
-    # Caso o status tenha sido "TERMINATED" e tenha falhado, também gera erro
-    #if return_status == 'TERMINATED':
-    #    error_message = status.get('state', {}).get('error_message', 'Erro desconhecido no job')
-    #    raise Exception(f"Job foi terminado inesperadamente. Detalhes: {error_message}, detalhes json:  {response.json()}")
 
     print(f"Job finalizado com sucesso. Detalhes: {response.json()}")
