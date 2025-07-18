@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 26,
+  "id": 32,
   "links": [],
   "panels": [
     {
@@ -131,7 +131,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "clamp_min(\n  3 - (\n    count(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes\"} > 0) \n  + count(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes_produtos\"} > 0) \n  + count(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_produtos_bancarios\"} > 0)\n  ),\n  0\n)",
+          "expr": "clamp_min(\n  3 - (sum(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes\"} or vector(0)) by (clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_clientes_produtos\"} or vector(0)) by (produtos_clientes) + sum(af_agg_ti_start_schedule_data_master{task_id=\"run_copy_produtos_bancarios\"} or vector(0)) by (produtos)   ),\n  0\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1682,8 +1682,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Monitoring Ingestion",
-  "uid": "fee3k1qijqw3kf",
-  "version": 145,
+  "title": "Monitoring Ingestion Copy",
+  "uid": "aesc4t6o55la8e",
+  "version": 1,
   "weekStart": ""
 }
